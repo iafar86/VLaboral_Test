@@ -7,7 +7,7 @@
  * # uiFullscreen
  * Directive of the app
  */
-angular.module('app')
+angular.module('vLaboralApp')
   .directive('uiFullscreen', ['$ocLazyLoad', '$document', function($ocLazyLoad, $document) {
     return {
       restrict: 'AC',

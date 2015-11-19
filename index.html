@@ -50,49 +50,54 @@
     <script src="libs/angular/angular-loading-bar/build/loading-bar.min.js"></script>
     <!--#endregion -->
     
-    <!-- UI- Select -->
+    <!--#region UI- Select -->
     <link href="libs/angular/angular-ui-select/dist/select.min.css" rel="stylesheet" />
     <script src="libs/angular/angular-ui-select/dist/select.min.js"></script>
-    <!-- end -->
+    <!--#endregion -->
     
-    <!-- daypilot-->
+    <!--#region daypilot-->
     <script src="libs/angular/daypilot/daypilot-all.min.js"></script>
-    <!-- end -->
+    <!-- #endregion -->
     
-    <!--ngAutocomplete/Google Places-->
+    <!--#region ngAutocomplete/Google Places-->
     <script src="libs/angular/ngAutocomplete/ngAutocomplete.js"></script>
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
-    <!-- end  -->
+    <!-- #endregion  -->
 
-    <!-- Angular Jwt-->
+    <!-- #region Angular Jwt-->
     <script src="libs/angular/angular-jwt/angular-jwt.js"></script>    
-    <!--end-->
-    <script src="libs/angular/angular-ui-router-extras/ct-ui-router-extras.js"></script>
-    <link href="libs/angular/ngTable/ng-table.css" rel="stylesheet" />
-    <script src="libs/angular/ngTable/ng-table.js"></script>
-
-    
-
     <!--#endregion-->
 
-    
+    <!--#region uiroutes.extras-->
+    <script src="libs/angular/angular-ui-router-extras/ct-ui-router-extras.js"></script>
+    <!--#endregion-->
 
+    <!--#region ng-tables-->
+    <link href="libs/angular/ngTable/ng-table.css" rel="stylesheet" />
+    <script src="libs/angular/ngTable/ng-table.js"></script>
+    <!--#endregion-->
 
-    
+    <!--#endregion-->
 
     <script src="App/vLaboralApp.js"></script>
     <script src="libs/angular/oclazyload/dist/ocLazyLoad.min.js"></script>
     <script src="scripts/app.ctrl.js"></script>
-    <script src="scripts/config.lazyload.js"></script>
+    <!--<script src="scripts/config.lazyload.js"></script>-->
    
-    <!--Seguridad-->
-
+    <!--#region Seguridad-->
     <script src="App/Seguridad/authInterceptorSvc.js"></script>
     <script src="App/Seguridad/authSvc.js"></script>
-    <script src="App/Seguridad/cuentaDataFactory.js"></script>
-    <script src="App/Seguridad/loginCtrl.js"></script>
-    <script src="App/Seguridad/signupCtrl.js"></script>
-    <script src="App/Seguridad/tokenDataFactory.js"></script>
+    <!--#endregion-->
+
+    <!--#region directivas Template-->
+    <script src="scripts/directives/lazyload.js"></script>
+    <script src="scripts/directives/ui-fullscreen.js"></script>
+    <script src="scripts/directives/ui-jp.js"></script>
+    <script src="scripts/directives/ui-nav.js"></script>
+    <script src="scripts/directives/ui-scroll.js"></script>
+    <script src="scripts/directives/ui-toggle.js"></script>
+    <!--#endregion-->
+
 
 
 </head>

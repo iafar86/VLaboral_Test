@@ -7,7 +7,7 @@
  * # uiScroll
  * Directive of the app
  */
-angular.module('app')
+angular.module('vLaboralApp')
   .directive('lazyLoad', ['MODULE_CONFIG','$ocLazyLoad', '$compile', function(MODULE_CONFIG, $ocLazyLoad, $compile) {
     return {
       restrict: 'A',

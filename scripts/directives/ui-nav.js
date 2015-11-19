@@ -7,7 +7,7 @@
  * # uiScroll
  * Directive of the app
  */
-angular.module('app')
+angular.module('vLaboralApp')
   .directive('uiNav', ['$timeout', function($timeout) {
     return {
       restrict: 'AC',
