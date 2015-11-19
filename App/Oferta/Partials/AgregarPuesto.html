@@ -1,0 +1,69 @@
+﻿<div layout="row" layout-align="center center" flex="70">
+    <h1>Nuevo Puesto</h1>
+</div>
+<div layout="row" layout-align="center center" flex="70" layout-margin layout-fill layout-padding>
+    <form class="form-control">
+        <div class="profile-content">
+            <div layout="row">
+                <md-input-container>
+                    <label>Nombre del Puesto</label>
+                    <input type="text" class="form-control md-input" />
+                    <label>Tipo de contratacion</label>
+                    <input type="text" class="form-control md-input" />
+                    <label>Cantidad</label>
+                    <input type="number" class="form-control md-input" />
+                </md-input-container>
+                <md-input-container>
+                    <label>Rubro</label>
+                    <md-select placeholder="Seleccione un rubro" ng-model="rubroSelect">
+                        <md-option ng-value="user" ng-repeat="rubro.Nombre for rubro in rubros"></md-option>
+                    </md-select>
+                    <label>Sub-Rubro</label>
+                    <md-select placeholder="Seleccione un sub-rubro" ng-model="oferta.subrubro">
+                        <md-option ng-value="user" ng-repeat="subrubro.nombre for subrubro in rubroSelect">
+                            {{subrubro.nombre for subrubro in rubroSelect}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container>
+                    <label>Habilidades Requeridas: </label>
+                    <md-chips ng-model="oferta.Habilidades" readonly=""></md-chips>
+                </md-input-container>
+                <md-input-container>
+                    <md-select placeholder="Nivel de estudios" ng-model="oferta.NivelDeEstudio">
+                        <md-option>Primario</md-option>
+                        <md-option>Secundario</md-option>
+                        <md-option>Terciario</md-option>
+                        <md-option>Universitario</md-option>
+                    </md-select>
+
+                    <input placeholder="Estado de estudio requerido(Completo/En curso)" />
+                </md-input-container>
+                <md-input-container>
+                    <label>Profesion</label>
+                    <input type="text" ng-model="oferta.profesion" class="form-control" />
+
+                    <label>Experiencia (años, meses...)</label>
+                    <input type="text" ng-model="oferta.experiencia" class="form-control" />
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Remuneracion (opcional)</label>
+                    <input ng-model="oferta.Remuneracion" />
+                </md-input-container>
+
+                <div layout="row" layout-align="end center">
+                    <md-button class="md-fab fa fa-check-square ">
+
+                    </md-button>
+                </div>
+            </div>
+
+
+        </div>
+
+    </form>
+
+
+
+</div>

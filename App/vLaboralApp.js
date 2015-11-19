@@ -50,6 +50,18 @@
                  }]
              }
          })
+
+        .state('app.agregarOferta', {
+            url: '/agregarOferta',
+            templateUrl: 'App/Oferta/Partials/ofertaAddMD.html',
+            controller: 'ofertaCtrl',
+            data: { title: 'ofertaAddMD' },
+            resolve: {
+                loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {                   
+                    return $ocLazyLoad.load(['App/Oferta/ofertaCtrl.js']);
+                }]
+            }
+        })
        })
 
     .config(function ($httpProvider) {

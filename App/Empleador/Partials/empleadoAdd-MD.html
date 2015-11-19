@@ -1,0 +1,149 @@
+﻿<div layout="column" layout-margin="" layout-fill="" layout-padding="" class="ng-scope">
+    <div layout="row" layout-align="center center">
+        <div flex="30">
+            <h1>Nuevo Empleado</h1>
+        </div>
+    </div>
+</div>
+<div layout="column" layout-margin layout-fill layout-padding>
+    <div layout="row" layout-align="center center" flex>
+        <div flex="30">
+            <md-button class="profile-sidebar">
+                
+                <!-- SIDEBAR USERPIC -->
+                <div class="profile-userpic">
+                    <img src="../../../../Content/img/companyLogo.png" class="img-responsive" alt="">
+                </div>
+                <!-- END SIDEBAR USERPIC -->
+                <!-- SIDEBAR USER TITLE -->
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name ng-binding">
+
+                    </div>
+                    <div class="profile-usertitle-job">
+                        Developer
+                    </div>
+                </div>
+                <!-- END SIDEBAR USER TITLE -->
+                <!-- SIDEBAR BUTTONS -->
+                <md-button class="md-fab fa fa-camera" >
+                    <!--<button type="button" class="btn btn-primary btn-sm">Editar Imagen</button>
+                    <button type="button" class="btn btn-success btn-sm">Guardar Perfil</button>-->
+                </md-button>
+                <!-- END SIDEBAR BUTTONS -->
+            </md-button>
+        </div>
+           
+    </div>
+    <section>
+        <div layout="row" layout-align="center center" flex>
+            <div flex="70">
+                <div class="profile-content">
+                    <form class="form-horizontal ">
+                        <div layout="row">
+                            <div flex="50">
+                                <md-input-container class=" md-block">
+                                    <label>DNI</label>
+                                    
+                                    <input class="form-control " required>
+                                </md-input-container>
+                            </div>
+
+
+                            <div flex="50">
+                                <md-input-container class="md-icon-float md-block">
+                                    <label>Cuil</label>
+                                    <input type="text" class="form-control" required />
+                                </md-input-container>
+                            </div>
+                        </div>
+                        <div layout="row">
+                            <div flex="50">
+                                <md-input-container class="md-default-theme md-input-invalid">
+                                    <label>Nombre</label>                                    
+                                    <input class="form-control" required />
+                                </md-input-container>
+                            </div>
+
+
+                            <div flex="50">
+                                <md-input-container>
+                                    <label>Apellido</label>
+                                    <input class="form-control" required />
+                                </md-input-container>
+                            </div>
+
+                        </div>
+
+                        <div layout="row">
+                            <div ng-cloak>
+                                <label>Fecha de nacimiento</label>
+                                <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
+                            </div>
+
+
+                        </div>
+
+                        <div layout="row">
+                            <div flex="50">
+                                <md-input-container class="md-default-theme md-input-invalid">
+                                    <label>Direccion</label>
+                                    
+                                    <input type="text" class="form-control" required />
+                                </md-input-container>
+                            </div>
+                            <div flex="50">
+                                <md-input-container class="md-default-theme md-input-invalid">
+                                    <label>Telefono</label>
+                                    
+                                    <input class="form-control" type="text" required />
+                                </md-input-container>
+                            </div>
+                        </div>
+
+                        <div layout="row">
+                            <div flex="100">
+                                <md-input-container class="md-default-theme md-input-invalid">
+                                    <label>E-Mail</label>
+                                    
+                                    <input type="email" class="form-control" required />
+                                </md-input-container>
+                            </div>
+
+                        </div>
+
+                        <div layout="row">
+                            <div flex>
+                                <label>¿Crear cuenta en UnMundo.com?</label>
+                                <md-switch ng-model="crearCuenta" ng-true-value="'Si por supuesto!'" ng-false-value="'El se la creara por si mismo'">
+                                    {{crearCuenta}}
+                                </md-switch>
+                            </div>
+                        </div>
+
+                        <div layout="row" layout-align="end center">
+                            <md-button class="md-fab fa fa-check-square " ng-click="empleadoAdd">
+
+                            </md-button>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+            
+           
+        </div>
+        
+        
+    </section>
+   
+
+</div>
+
+
+        
+
+
+
+

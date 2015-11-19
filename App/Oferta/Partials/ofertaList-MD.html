@@ -1,0 +1,39 @@
+﻿<section>
+    <div layout="column" layout-margin flex>
+        <form>
+            <div class="md-input-focused">
+                <input id="buscar" type="search" required/>
+                <label for="buscar">
+                    <i class="mdi-action-search"></i>Buscar Ofertas
+                </label>
+            </div>
+        </form>
+        <div layout="row">
+            <div layout="column">
+                <md-input-container>
+                    <label>Filtrar por</label>
+                    <md-select>
+                        <md-option ng-model="filtroSelect">
+
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+        </div>
+        <div layout="row">
+            <md-list ng-show="">
+                <md-list-item class="md-3-line" ng-repeat="item in todos">
+                    <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
+                    <div class="md-list-item-text" layout="column">
+                        <h3>{{ item.who }}</h3>
+                        <h4>{{ item.what }}</h4>
+                        <p>{{ item.notes }}</p>
+                    </div>
+                </md-list-item>
+                <md-divider></md-divider>
+            </md-list>
+            
+        </div>
+
+    </div>
+</section>

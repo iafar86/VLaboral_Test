@@ -1,0 +1,88 @@
+﻿<div layout="column" layout-margin="" layout-fill="" layout-padding="">
+    <div layout="row" layout-align="center center">
+        <div flex="30">
+            <h1>Nueva Oferta</h1>
+        </div>
+    </div>
+</div>
+<div layout="column" layout-margin layout-fill layout-padding>
+    <div layout="row" layout-align="center center" flex>
+        <div flex="30">
+            <div class="profile-userpic">
+                <img src="../../../../Content/img/companyLogo.png" class="img-responsive" alt="">
+            </div>
+        </div>
+    </div>
+    <section>
+        <div layout="row" layout-align="center center" flex >
+            <div flex="70">
+                <div class="profile-content">
+                    <form class="form-horizontal">
+                        <div layout="row">
+                            <div flex="50">
+                                <md-input-container>
+                                    <label>Nombre de la Oferta</label>
+                                    <input class="form-control md-input" required>
+                                </md-input-container>
+                            </div>
+                            
+                            <div flex="50">
+                                <md-input-container>
+                                    <label>Lugar</label>
+                                    <input class="form-control md-input" required>
+                                </md-input-container>
+                            </div>
+                        </div>
+                        
+                        
+                        <div layout="row">
+                            <div layout="column" flex="50">
+                                <label>Fecha de Inicio</label>
+                                <md-datepicker ng-model="date"></md-datepicker>
+                            </div>
+                            <div layout="column" flex="50">
+                                <label>Fecha de Fin</label>
+                                <md-datepicker ng-model="date"></md-datepicker>
+                            </div>
+                        </div>
+
+                        <md-input-container class="md-block autoScroll">
+                            <label>Descripcion</label>
+                            <textarea ng-model="user.biography" columns="1" md-maxlength="150"></textarea>
+                        </md-input-container>
+                        <!--<br />
+                        <md-divider></md-divider>
+                        <br />-->
+
+                        <div layout="row">
+                            <md-list>
+                                <md-list-item ng-repeat="puesto in puestos">
+                                    <div class="md-list-item-text" layout="column">
+                                        <h3>{{puesto.nombre}}</h3>
+                                        <h2>cantidad: {{cantidad.lugar}}</h2>
+                                    </div>
+                                </md-list-item>
+                            </md-list>
+
+                        </div>
+
+
+                        <div layout="row" layout-align="star center">
+
+                            <div flex="60"><h2>Agrega puestos en la oferta</h2></div>
+                            <div flex="30"><md-button class="md-fab fa fa-plus" aria-label="PuestosAdd" ng-click="AbrirParaAgregar($event)"></md-button> </div>
+
+
+                        </div>
+
+
+                    </form>
+                </div>
+                
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
