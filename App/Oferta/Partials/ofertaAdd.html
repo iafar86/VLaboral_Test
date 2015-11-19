@@ -1,0 +1,336 @@
+﻿<div class="row">
+    <div class="col-md-12 col-lg-12 col-xs-12">
+        <div class="box dark">
+            <header>
+                <div class="icons">
+                    <i class="glyphicon glyphicon-lock"></i>
+                </div>
+                <h5>Carga de Oferta Laboral</h5>
+                <div class="toolbar">
+                    <div class="btn btn-sm btn-default minimize-box">
+                        <a>
+                            <i class="fa fa-angle-up"></i>
+                        </a>
+                    </div>
+                </div>
+            </header> <!--Encabezado-->
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <br />
+                        <img src="../../../../Icon.png" class="img-circle img-responsive" />
+                    </div> <!--Imagen Principal de empresa-->
+
+                    <div class="col-xs-8">
+                        <br />
+                        <div class="form-group">
+                            <label>Nombre de la Oferta</label>
+                            <input type="text" class="form-control" ng-model="Oferta.NombreDeLaOferta" required />
+                        </div>  <!--Nombre de la oferta-->
+
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <div class="col-xs-7">
+                                    <div class='container-fluid'>
+
+                                        <label>Lugar</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div> <!--Lugar-->
+                            </div>
+
+                        </div> <!--Rubro--> <!--Lugar-->
+                        <br />
+                        <div class="row">
+
+                            <div class="col-xs-6">
+                                <label>Fecha de Inicio de Oferta</label>
+                                <p class="input-group">
+                                    <input type="date" ng-required="true" close-text="Close" class="form-control" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
+                            </div> <!--Fecha de Inicio de la Oferta-->
+
+
+                            <div class="col-xs-6">
+                                <label>Fecha de Fin de la Oferta</label>
+                                <p class="input-group">
+                                    <input type="date" ng-required="true" close-text="Close" class="form-control" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
+                            </div> <!--Fecha de Fin de la Oferta-->
+                        </div> <!--Fecha de Inicio de la Oferta--> <!--Fecha de Fin de la Oferta-->
+
+                        <div class="form-group">
+
+                            <label>Descripcion</label>
+                            <textarea cols="25" rows="6" class="form-control" required> </textarea>
+                        </div> <!--Descripcion de la Oferta-->
+                    </div> <!--Primer seccion de carga de datos(panel derecho)-->
+
+                </div>
+
+            </div> <!--Panel Principal de Oferta-->
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-11">
+
+                        <accordion>
+                            <accordion-group>
+                                <accordion-heading>
+                                    Puestos de Oferta
+                                </accordion-heading> <!--Encabezado Acordion-->
+                                <br />
+
+                                <div class="row text-center">
+                                    <div class="col-xs-9 text-left">
+                                        Puestos de Oferta: {{CantPuestos}}
+                                    </div>
+                                    <div class="col-xs-2 text-right">
+                                        <button class="btn btn-default btn-primary" ng-click="AddPuesto()">
+                                            Nuevo Puesto
+                                        </button>
+                                    </div>
+                                </div>   <!--Manejo de Puestos-->
+                                <br />
+
+                                <div class="row" ng-repeat="Puesto in Puestos track by $index">
+
+                                    <div class="col-xs-10 col-xs-offset-1">
+
+                                        <accordion>
+
+                                            <accordion-group heading="Nuevo Puesto">
+                                                <div class="col-xs-12">
+
+                                                    <div class="row">
+                                                        <div class="col-xs-6">
+                                                            <div class="form-inline">
+                                                                <label>Puesto</label>
+                                                                <input type="text" class="form-control ng-pristine ng-valid ng-touched" placeholder="Nombre del puesto...">
+                                                            </div>
+                                                        </div> <!--Nombre del Puesto-->
+
+
+                                                        <div class="col-xs-6">
+                                                            <div class="col-xs-5">
+                                                                <label>
+                                                                    Rubro
+                                                                    <select ng-model="Oferta.Rubro" class="btn btn-primary dropdown-toggle">
+                                                                        <option ng-repeat="Rubros in Rubros" value="Rubro.Nombre">{{Rubro.Nombre}}</option>
+                                                                    </select>
+                                                                </label>
+                                                            </div> <!--Rubro-->
+                                                            <div class="col-xs-7">
+                                                                <label>Sub-rubro del puesto</label>
+                                                                <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle="" ng-disabled="disabled">
+                                                                    Sub-rubro <span class="caret"></span>
+                                                                </button>
+                                                                <ul class="dropdown-menu" role="menu">
+                                                                    <li><a href="#">action</a></li>
+                                                                    <li><a href="#">another action</a></li>
+                                                                    <li><a href="#">something else here</a></li>
+                                                                </ul>
+                                                            </div>
+
+                                                        </div> <!--Sub Rubro de la Oferta-->
+                                                    </div><!--Nombre del Puesto--> <!--Sub Rubro de la Oferta-->
+                                                    <br>
+
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="form-group">
+                                                                <label>
+                                                                    Tipo de contrato
+                                                                    <input type="text" class="form-control ng-pristine ng-valid ng-touched" placeholder="Directa, contrato de locacion...">
+                                                                </label>
+                                                            </div>
+                                                        </div>
+
+                                                    </div><!--Tipo de Contrato-->
+
+                                                    <div class="row">
+                                                        <div class="col-xs-6">
+                                                            <div class="form-group">
+                                                                <label>Agregar habilidades requeridas</label>
+                                                                <input type="text" class="form-control ng-valid ng-dirty ng-pristine" placeholder="habilidad requerida">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-xs-6">
+                                                            <div class="form-inline">
+
+                                                                <button class="btn btn-primary btn-xs">Agregar</button>
+
+                                                                <div class="list-items animate-show-item ng-hide" ng-show="category.expanded">
+                                                                    <ul>
+                                                                        <!-- ngrepeat: task in habilidades.task -->
+                                                                    </ul>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div><!--Habilidades-->
+
+                                                    <div class="row">
+                                                        <div class="col-xs-7">
+                                                            <div class="form-group">
+                                                                <label>Remuneración</label>
+                                                                <input type="text" class="form-control ng-pristine ng-valid">
+                                                            </div>
+                                                        </div>
+                                                    </div> <!--Remuneracion-->
+
+                                                    <div class="row">
+                                                        <div class="col-xs-2">
+                                                            <div class="form-group">
+                                                                <div class="btn-group" dropdown="" is-open="status.isopen">
+                                                                    <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle="" ng-disabled="disabled" aria-haspopup="true" aria-expanded="false">
+                                                                        Nivel de estudio <span class="caret"></span>
+                                                                    </button>
+                                                                    <ul class="dropdown-menu" role="menu">
+                                                                        <li><a href="#">action</a></li>
+                                                                        <li><a href="#">another action</a></li>
+                                                                        <li><a href="#">something else here</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div> <!--Nivel de Estudio-->
+
+
+                                                        <div class="col-xs-3">
+                                                            <div class="form-horizontal">
+                                                                <div class="checkbox">
+                                                                    <label>Finalizado?    </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" class="ng-pristine  ng-valid">
+
+                                                                </div>
+                                                            </div>
+                                                        </div> <!--Finalizado-->
+
+                                                        <div class="col-xs-2">
+                                                            <div class="btn-group" dropdown="" is-open="status.isopen">
+                                                                <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle="" ng-disabled="disabled" aria-haspopup="true" aria-expanded="false">
+                                                                    Profesion <span class="caret"></span>
+                                                                </button>
+                                                                <ul class="dropdown-menu" role="menu">
+                                                                    <li><a href="#">action</a></li>
+                                                                    <li><a href="#">another action</a></li>
+                                                                    <li><a href="#">something else here</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div> <!--Profesion-->
+
+                                                        <div class="col-xs-5">
+                                                            <div class="form-inline">
+                                                                <label>Experiencia</label>
+                                                                <input type="text" class="form-control ng-pristine  ng-valid" placeholder="Experiencia(meses/años)...">
+                                                            </div>
+                                                        </div> <!--Experiencia-->
+                                                    </div><!--Nivel de Estudio--> <!--Finalizado--> <!--Profesion--> <!--Experiencia-->
+                                                    <!-- dropdown multiselect -->
+
+                                                    <div class="row">
+                                                        <div class="col-xs-3">
+                                                            <div class="form-group">
+                                                                <div class="btn-group" dropdown="" is-open="status.isopen">
+                                                                    <button type="button" class="btn btn-primary dropdown-toggle ng-pristine  ng-valid" dropdown-toggle="" ng-disabled="disabled">
+                                                                        Distancia al trabajo <span class="caret"></span>
+                                                                    </button>
+                                                                    <ul class="dropdown-menu" role="menu">
+                                                                        <li><a href="#">action</a></li>
+                                                                        <li><a href="#">another action</a></li>
+                                                                        <li><a href="#">something else here</a></li>
+                                                                        <li class="divider"></li>
+                                                                        <li><a href="#">separated link</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div> <!--Distancia al Trabajo-->
+
+                                                        <div class="col-xs-6">
+                                                            <div class="form-group">
+                                                                <label>Movilidad requerida?</label>
+                                                                <div class="btn-group" dropdown="" is-open="status.isopen">
+                                                                    <button type="button" class="btn btn-primary dropdown-toggle ng-pristine  ng-valid" dropdown-toggle="" ng-disabled="disabled">
+                                                                        Si <span class="caret"></span>
+                                                                    </button>
+                                                                    <ul class="dropdown-menu" role="menu">
+                                                                        <li><a href="#">Si</a></li>
+                                                                        <li><a href="#">No</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div> <!--Movilidad Requerida-->
+                                                    </div> <!--Distancia al Trabajo--> <!--Movilidad Requerida-->
+
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="form-group">
+
+                                                                <label>Adicionales</label>
+                                                                <textarea cols="25" rows="6" class="form-control ng-pristine  ng-valid" required=""> </textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div> <!--Adicionales-->
+
+                                                </div>
+
+                                                <br>
+                                                <br>
+                                            </accordion-group>
+
+                                        </accordion>
+
+
+                                    </div> <!--Puesto nuevo-->
+
+                                </div> <!--ng-Repeat container-->
+
+                                <br />
+
+
+
+                                <br />
+
+
+                            </accordion-group>
+
+                        </accordion> <!--Accordion para agregar encabezado a seccion Puestos-->
+
+                    </div> <!--Seccion Agregar De Puestos de Ofertas-->
+
+                </div>
+
+            </div> <!--Panel de Puestos-->
+
+            <div class="row">
+                <footer class="pull-right">
+                    <div class="col-xs-4">
+                        <button type="button" class="btn btn-primary" ng-model="">
+                            Guardar
+                        </button>
+                    </div> <!--Boton Guardar-->
+                    <div class="col-xs-3">
+                        <button type="button" class="btn btn-primary" ng-model="">
+                            Guardar y Publicar
+                        </button>
+                    </div> <!--Boton Guardar y Publicar-->
+                </footer><!--Botones-->
+            </div>
+
+            <br />
+
+        </div> <!--barra superior-->
+
+
+
+
+    </div><!--Contenedor de Paneles de Vista-->
+
+</div> <!--Contenedor Principal-->

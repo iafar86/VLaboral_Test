@@ -1,0 +1,52 @@
+﻿<!-- fpaz: Area de Listado de Clientes-->
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-name">
+                    <span>Listado de Empleados</span>
+                </div>
+                <div class="box-icons">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="expand-link">
+                        <i class="fa fa-expand"></i>
+                    </a>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+                <div class="no-move"></div>
+            </div>
+            <div class="box-content no-padding">
+                <table ng-table="tableParams" class="table ng-table-responsive table-bordered table-striped table-hover table-heading table-datatable" show-filter="true">
+                    <tr ng-repeat="empleado in empleados">
+                        <td data-title="'Id de Empleado'" filter="{ 'Id': 'text' }">
+                            {{empleado.Id}}
+                        </td>
+                        <td data-title="'Nombre o Razon Social'" filter="{ 'Nombre_RazonSocial': 'text' }">
+                            <img class="img-rounded" width="15%" src="../../../../Content/photo.jpg" alt="">{{empleado.NombreApellido}}                            
+                        </td>
+                        <td data-title="'CUIT/CUIL'">
+                            {{empleado.Cuil}}
+                        </td>
+                        <td data-title="'Direccion'">
+                            {{empleado.Direccion}}
+                        </td>
+                        <td data-title="'Telefono'">
+                            {{empleado.Telefono}}
+                        </td>
+                        <td data-title="'Email'">
+                            {{empleado.Email}}
+                        </td>
+                        <td>
+                            <a ui-sref="profile({empleadoId:empleado.Id})">Ver Detalle</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- fpaz: Fin Area de Listado de Empleados-->

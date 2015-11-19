@@ -1,0 +1,109 @@
+﻿<div class="row">
+    <div class="col-md-12">
+
+        <div class="box dark">
+            <header>
+                <div class="icons">
+                    <i class="glyphicon glyphicon-lock"></i>
+                </div>
+                <h5>Mis Ofertas Laborales</h5>
+                <div class="toolbar">
+                    <div class="btn btn-sm btn-default minimize-box">
+                        <a>
+                            <i class="fa fa-angle-up"></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+            <br />
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="col-xs-3">
+                        <div class="btn-group" dropdown is-open="status.isopen">
+                            <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
+                                Buscar Por <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Nombre</a></li>
+                                <li><a href="#">Puesto</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Otros</a></li>
+                            </ul>
+                        </div> <!--Boton buscar por-->
+                    </div><!--Buscar por-->
+                    <div class="col-xs-9">
+                        <input type="text" ng-model="" class="form-control" placeholder="Ingrese lo que quiere buscar" required />
+                    </div><!--Cadena de busqueda-->
+                </div><!--Nombre de oferta-->
+                <div class="col-xs-4">
+                    <div class="btn-group">
+                        <label class="btn btn-warning" uncheckable>Pendiente</label>
+                        <label class="btn btn-success" uncheckable>Publicada</label>
+                        <label class="btn btn-default" uncheckable>Terminada</label>
+                    </div>
+                </div>
+            </div><!--Busqueda de oferta-->
+            <br />
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Resultado de la busqueda</div>
+                        <div class="panel-body">
+                            <div ng-repeat="Oferta in Ofertas">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">{{Oferta.Nombre}}</div>
+                                    <div class="panel-body">
+                                        <div class="panel-body form-inline">
+                                            <div class="col-xs-3">
+                                                <img src="../../../../Imagenes/10734009_836571383032581_1746110247923660756_n.png" class="img-responsive img-rounded" style="width:80%;heigth:80%">
+
+                                            </div>
+                                            <div class="col-xs-6 form-inline">
+                                                <div class="row">
+
+                                                    <div class="col-xs-6 form-inline">
+
+                                                        <label>Rubro: {{Oferta.Rubro}}</label>
+
+                                                    </div>
+
+
+                                                    <div class="col-xs-6 form-inline">
+                                                        <label>Fecha: {{Oferta.FechaDeInicio}}</label>
+
+                                                    </div>
+                                                </div>
+                                                <br>
+
+
+                                                <div class="row">
+                                                    <div class="col-xs-12 form-group">
+                                                        <label>Descripcion: {{Oferta.Descripcion}}</label>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                    <!--<div class="row text-center text-info">
+                No se encontraron coincidencias
+            </div-->
+
+                </div>
+
+
+
+            </div> <!--Lista de Resultados-->
+        </div>
+    </div>
+</div>
