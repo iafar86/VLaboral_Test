@@ -16,7 +16,7 @@
 
     var _responseError = function (rejection) { // funcion que se dispara solo si la peticion al web api devolvio un response con error
         if (rejection.status === 401) { // verifico que el error sea 401, que el web api lo devuelve si el usuario no esta autorizado a acceseder a ese recurso
-            $location.path('/login'); // en ese caso rmando al usuario a la pagina de login
+            $location.path('/seguridad/login'); // en ese caso rmando al usuario a la pagina de login
         }
         return $q.reject(rejection);
     }

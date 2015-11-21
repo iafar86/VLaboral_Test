@@ -78,15 +78,26 @@
     <!--#endregion-->
 
     <!--#endregion-->
-
+   
+    <!--#region JS de la Aplicacion-->
+    <!--#region Modulo-->
     <script src="App/vLaboralApp.js"></script>
     <script src="libs/angular/oclazyload/dist/ocLazyLoad.min.js"></script>
     <script src="scripts/app.ctrl.js"></script>
-    <!--<script src="scripts/config.lazyload.js"></script>-->
-   
+    <!--#endregion-->
+
     <!--#region Seguridad-->
     <script src="App/Seguridad/authInterceptorSvc.js"></script>
     <script src="App/Seguridad/authSvc.js"></script>
+    <script src="App/Seguridad/cuentaDataFactory.js"></script>
+    <script src="App/Seguridad/tokenDataFactory.js"></script>
+    <!--#endregion-->
+
+    <!--#region DataFactorys-->
+    <script src="App/Empleador/empleadorDataFactory.js"></script>
+    <script src="App/Empleado/empleadoDataFactory.js"></script>
+    <script src="App/Oferta/ofertaDataFactory.js"></script>
+    <script src="App/Rubro/rubroDataFactory.js"></script>
     <!--#endregion-->
 
     <!--#region directivas Template-->
@@ -98,8 +109,7 @@
     <script src="scripts/directives/ui-toggle.js"></script>
     <!--#endregion-->
 
-
-
+    <!--#endregion-->
 </head>
 
 <body ng-app="vLaboralApp">

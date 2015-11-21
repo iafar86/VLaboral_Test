@@ -32,7 +32,7 @@
     var startTimer = function () {
         var timer = $timeout(function () {
             $timeout.cancel(timer);
-            $location.path('/login');
+            $location.path('/seguridad/login');
         }, 2000);
     }
 

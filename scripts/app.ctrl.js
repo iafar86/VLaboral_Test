@@ -36,7 +36,7 @@ angular.module('vLaboralApp')
             accent: 'purple',
             warn: 'amber'
           },
-          asideFolded: false
+          asideFolded: true
         },
         search: {
           content: '',
