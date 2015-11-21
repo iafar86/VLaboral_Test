@@ -8,15 +8,15 @@
  * Controller of the app
  */
 angular.module('vLaboralApp')  
-  .controller('AppCtrl', ['$scope',  '$window', '$document', '$location', '$rootScope', '$timeout', '$mdSidenav', '$mdColorPalette', '$anchorScroll',
-    function (             $scope,    $window,   $document,   $location,   $rootScope,   $timeout,   $mdSidenav,   $mdColorPalette,   $anchorScroll ) {
+  .controller('AppCtrl', ['$scope',  '$window', '$document', '$location', '$rootScope', '$timeout', '$mdSidenav', '$mdColorPalette', '$anchorScroll','authSvc',
+    function ($scope, $window, $document, $location, $rootScope, $timeout, $mdSidenav, $mdColorPalette, $anchorScroll, authSvc) {
       // add 'ie' classes to html
       var isIE = !!navigator.userAgent.match(/MSIE/i) || !!navigator.userAgent.match(/Trident.*rv:11\./);
       isIE && angular.element($window.document.body).addClass('ie');
       isSmartDevice( $window ) && angular.element($window.document.body).addClass('smart');
       // config
       $scope.app = {
-        name: 'Materil',
+        name: 'VLaboral',
         version: '1.0.2',
         // for chart colors
         color: {
@@ -113,5 +113,14 @@ angular.module('vLaboralApp')
         $timeout(function() { $document.find('#aside').length && $mdSidenav('aside').close(); });
       }
 
+        // fpaz: obtengo los datos del usuario logeado
+      $scope.authentication = authSvc.authentication;
+        //fpaz: funcion para el logout
+      $scope.logOut = function () {
+          authSvc.logOut();
+          alert("Deslogueado")
+          $scope.authentication.userName = "usuario deslogueado";
+          $location.path('/seguridad/login');
+      }
     }
   ]);

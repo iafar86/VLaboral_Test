@@ -4,7 +4,7 @@
         authSvc.logOut();
         alert("Deslogueado")
         $scope.authentication.userName = "usuario deslogueado";
-        $location.path('/home');
+        $location.path('/seguridad/login');
     }
 
     $scope.authentication = authSvc.authentication;

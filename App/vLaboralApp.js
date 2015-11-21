@@ -75,6 +75,11 @@
                     }]
                 }
             })
+            .state('app.perfil', {
+                url: '/perfilUsuario',
+                templateUrl: 'views/pages/settings.html',
+                data: { title: 'Perfil de Usuario' }
+            })
         
             //#endregion
 

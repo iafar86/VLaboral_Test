@@ -4,6 +4,12 @@
       Menu General
     </li>
       <li>
+          <a md-ink-ripple ui-sref="app.perfil">
+              <i class="icon mdi-action-perm-contact-cal i-20"></i>
+              <span>Mi Perfil</span>
+          </a>
+      </li>
+      <li>
           <!--#region Panel de Control-->
           <a md-ink-ripple ui-sref="app.dashboard">              
               <i class="icon mdi-action-dashboard i-20"></i>
@@ -72,6 +78,19 @@
 
     
     <li class="b-b b m-v-sm"></li>
+      <li>
+          <a md-ink-ripple ng-click="logOut()">
+              <i class="icon mdi-action-exit-to-app i-20"></i>
+              <span>Cerrar Sesi&oacute;n</span>
+          </a>
+      </li>
+      <li class="m-v-sm b-b b"></li>
+      <li>
+          <a md-ink-ripple ui-fullscreen>
+              <i class="icon mdi-navigation-fullscreen i-24"></i>
+              <span>Fullscreen</span>
+          </a>
+      </li>
     <li>
       <a md-ink-ripple ui-toggle-class="hide, show" target="#nav, #account">
         <span>Settings</span>
