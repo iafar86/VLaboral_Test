@@ -206,8 +206,9 @@
                         data: { title: 'Info Empleado' },
                         resolve: {
                             empleadoDataFactory: 'empleadoDataFactory',
-                            infoEmpleado: function () {
-                                return { value: [] };
+                            infoEmpleado: function (empleadoDataFactory, $stateParams) {
+                                var empleadoId = $stateParams.empleadoId;
+                                return empleadoDataFactory.getEmpleado(empleadoId);
                             },
                             listadoEmpleados: function () {
                                 return { value: [] };
@@ -230,8 +231,8 @@
                             infoEmpleado: function () {
                                 return { value: [] };
                             },
-                            listadoEmpleados: function () {
-                                return { value: [] };
+                            listadoEmpleados: function (empleadoDataFactory) {
+                                return empleadoDataFactory.getEmpleados();
                             },
                             listadoRubros: function () {
                                 return { value: [] };

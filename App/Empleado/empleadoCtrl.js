@@ -37,18 +37,19 @@
     //#region validaciones
     //fpaz: funcion para validar si ya existe un empleado cargado con el numero de dni ingresado
     $scope.validacionDni = function (prmDni) {
-        $scope.prmDni = prmDni;
-        alert(prmDni);
-        empleadoDataFactory.query({ id: 0, prmDni: prmDni }).$promise.then(
-            function () {
-                //alert("No existe el tipo - sigue");
-                $scope.edit();
-            },
-            function (response) {
-                $scope.editValue = false;
-                $scope.errors = response.data;
-                alert($scope.errors.Message);
-            });
+        $scope.edit();
+        //$scope.prmDni = prmDni;
+        //alert(prmDni);
+        //empleadoDataFactory.query({ id: 0, prmDni: prmDni }).$promise.then(
+        //    function () {
+        //        //alert("No existe el tipo - sigue");
+        //        $scope.edit();
+        //    },
+        //    function (response) {
+        //        $scope.editValue = false;
+        //        $scope.errors = response.data;
+        //        alert($scope.errors.Message);
+        //    });
     };
     //#region
 
@@ -60,17 +61,20 @@
     };
     
     $scope.empleadoAdd = function (empleado) {
-        empleadoDataFactory.save(empleado).$promise.then(
-            function () {
-                $scope.addEmpleado();
-                $scope.empleado = {};
-                alert('Nuevo Empleado Guardado');
-                $state.go('empleadoList');
-            },
-            function (response) {
-                $scope.errors = response.data;
-                alert($scope.errors.Message);
-            });
+        alert('entra por empleado add');
+        //empleadoDataFactory.postEmpleado(empleado).$promise.then(
+        //    function () {
+        //        $scope.addEmpleado();
+        //        $scope.empleado = {};
+        //        alert('Nuevo Empleado Guardado');
+        //        $state.go('empleadoList');
+        //    },
+        //    function (response) {
+        //        $scope.errors = response.data;
+        //        alert($scope.errors.Message);
+        //    });
+        empleadoDataFactory.postEmpleado(empleado);
+        alert('paso el post');
     };
 
     $scope.cancelEmpleadoAdd = function () {
