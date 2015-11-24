@@ -1,4 +1,4 @@
-﻿vLaboralApp.controller('ofertaCtrl', function ($scope, $stateParams, $state, $filter, ngTableParams) {
+﻿vLaboralApp.controller('ofertaCtrl', function ($scope, $stateParams, $state, $filter, ngTableParams, $mdDialog) {
 
     //// Disable weekend selection
     //$scope.disabled = function (date, mode) {
@@ -57,6 +57,16 @@
     //    return '';
     //};
 
+    //Alta Oferta
+    //$scope.ofertaAdd= function (oferta)
+    //{
+    //    ofertaDataFactory.postOferta(oferta);
+    //}
+
+    //$scope.cancelOferta = function () {
+    //    $scope.oferta = null;
+    //};
+
 
     //iafar: Puestos
 
@@ -83,6 +93,33 @@
 
     //];
 
+    //Dialog Region
+    $scope.AbrirParaAgregar = function (ev) {
+        $mdDialog.show({
+            controller: DialogController,
+            templateUrl: 'App/Oferta/Partials/AgregarPuesto.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true
+        })
+            .then(function (answer) {
+                $scope.status = 'You said the information was "' + answer + '".';
+            }, function () {
+                $scope.status = 'You cancelled the dialog.';
+            });
+    };
 
+    function DialogController($scope, $mdDialog) {
+        $scope.hide = function () {
+            $mdDialog.hide();
+        };
+        $scope.cancel = function () {
+            $mdDialog.cancel();
+        };
+        $scope.answer = function (answer) {
+            $mdDialog.hide(answer);
+        };
+    };
+    //end Region#
 
 });

@@ -1,39 +1,54 @@
 ﻿<section>
-    <div layout="column" layout-margin flex>
-        <form>
-            <div class="md-input-focused">
-                <input id="buscar" type="search" required/>
-                <label for="buscar">
-                    <i class="mdi-action-search"></i>Buscar Ofertas
-                </label>
-            </div>
-        </form>
-        <div layout="row">
-            <div layout="column">
-                <md-input-container>
-                    <label>Filtrar por</label>
-                    <md-select>
-                        <md-option ng-model="filtroSelect">
+    <div class="container">
+        <div layout="column" flex>
+            <md-content>
+                <md-toolbar>
+                    <div class="md-toolbar-tools">
 
-                        </md-option>
-                    </md-select>
-                </md-input-container>
-            </div>
-        </div>
-        <div layout="row">
-            <md-list ng-show="">
-                <md-list-item class="md-3-line" ng-repeat="item in todos">
-                    <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
-                    <div class="md-list-item-text" layout="column">
-                        <h3>{{ item.who }}</h3>
-                        <h4>{{ item.what }}</h4>
-                        <p>{{ item.notes }}</p>
+                        <input placeholder="Buscar" class="md-input" type="search" ng-model="buscar" />
+                        <span flex></span>
+                        <md-icon><i class="mdi-action-search "></i></md-icon>
+
+                    </div>
+
+
+                </md-toolbar>
+            </md-content>
+            <md-input-container>
+                
+                <md-select ng-model="filtroSelect" placeholder="Filtrar por">
+                    <label>Filtrar por</label>
+                    <md-option>
+                        Finalizadas
+                    </md-option>
+                    <md-option>
+                        En proceso de contratacion
+                    </md-option>
+
+                </md-select>
+
+
+            </md-input-container>
+            
+            <md-list ng-repeat="oferta in ofertas">
+                <md-list-item class="md-3-line">
+                    <div class="md-list-item-text">
+                        <h2>{{oferta.NombreOferta}}</h2>
+                        <h3>Lugar: {{oferta.Lugar}}</h3>
+                        <p>Fecha de finalizacion: {{oferta.FechaFin}}</p>
                     </div>
                 </md-list-item>
                 <md-divider></md-divider>
+                <md-list-item class="md-3-line">
+                    <div class="md-list-item-text">
+                        <h2>Taxi boys para el turco</h2>
+                        <h3>Lugar: casa del turco</h3>
+                        <p>A pedir del turco</p>
+                    </div>
+                </md-list-item>
             </md-list>
-            
         </div>
-
     </div>
 </section>
+   
+
