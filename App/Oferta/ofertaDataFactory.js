@@ -5,3 +5,41 @@
            { 'update': { method: 'PUT' } }
         );
 });
+
+vLaboralApp.factory('ofertaDataFactory', function ($http) {
+
+    var urlApi = "http://localhost:32069"; //fpaz: url del web api de cuentas de usuario, cambiar por el de produccion una vez implementado
+    var ofertaDataFactory = {};
+
+    var _getOfertas = function () { // trae todos las ofertas
+        return $http.get(urlApi + '/api/Ofertas').then(function (response) {
+            return response.data;
+        });
+    };
+
+    var _getOfertas_Empleador = function (prmIdEmpleador) { //un empleado en particular
+        return $http.get(urlApi + '/api/Ofertas/' + prmIdEmpleador).then(function (response) {
+            return response.data;
+        });
+    };
+
+    var _getOfertas_Busqueda = function (prmIdEmpleador, prmSearchObj) { //busqueda por empleador y parametros de busqueda
+        return $http.get(urlApi + '/api/Ofertas/' + prmIdEmpleador, prmSearchObj).then(function (response) {
+            return response.data;
+        });
+    };
+
+    var _postOferta = function (data) { //alta de una oferta en particular
+        return $http.post(urlApi + '/api/Ofertas/', data).then(function (response) {
+            return response;
+        });
+    };
+
+    ofertaDataFactory.getOfertas = _getOfertas;
+    ofertaDataFactory.getOfertas_Empleador = _getOfertas_Empleador;
+    ofertaDataFactory.getOfertas_Busqueda = _getOfertas_Busqueda;
+    ofertaDataFactory.postOfertas = _postOfertas;
+
+    return ofertaDataFactory;
+
+});
