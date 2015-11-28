@@ -113,6 +113,7 @@ angular.module('vLaboralApp')
         $timeout(function() { $document.find('#aside').length && $mdSidenav('aside').close(); });
       }
 
+    //#region fpaz: funciones de seguridad
         // fpaz: obtengo los datos del usuario logeado
       $scope.authentication = authSvc.authentication;
         //fpaz: funcion para el logout
@@ -122,5 +123,6 @@ angular.module('vLaboralApp')
           $scope.authentication.userName = "usuario deslogueado";
           $location.path('/seguridad/login');
       }
+    //#endregion
     }
   ]);

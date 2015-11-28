@@ -1,125 +1,78 @@
 ﻿vLaboralApp.controller('ofertaCtrl', function ($scope, $stateParams, $state, $filter, ngTableParams, $mdDialog) {
 
-    //// Disable weekend selection
-    //$scope.disabled = function (date, mode) {
-    //    return (mode === 'day' && (date.getDay() === 0 || date.getDay() === 6));
-    //};
+    //#region Inicializacion de variables de scope
+    $scope.listPuestos = [];    
 
-    //$scope.toggleMin = function () {
-    //    $scope.minDate = $scope.minDate ? null : new Date();
-    //};
-    //$scope.toggleMin();
-
-    //$scope.open = function ($event) {
-    //    $event.preventDefault();
-    //    $event.stopPropagation();
-
-    //    $scope.opened = true;
-    //};
-
-    //$scope.dateOptions = {
-    //    formatYear: 'yy',
-    //    startingDay: 1
-    //};
-
-    //$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-    //$scope.format = $scope.formats[0];
-
-    //var tomorrow = new Date();
-    //tomorrow.setDate(tomorrow.getDate() + 1);
-    //var afterTomorrow = new Date();
-    //afterTomorrow.setDate(tomorrow.getDate() + 2);
-    //$scope.events =
-    //  [
-    //    {
-    //        date: tomorrow,
-    //        status: 'full'
-    //    },
-    //    {
-    //        date: afterTomorrow,
-    //        status: 'partially'
-    //    }
-    //  ];
-
-    //$scope.getDayClass = function (date, mode) {
-    //    if (mode === 'day') {
-    //        var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
-
-    //        for (var i = 0; i < $scope.events.length; i++) {
-    //            var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
-
-    //            if (dayToCheck === currentDay) {
-    //                return $scope.events[i].status;
-    //            }
-    //        }
-    //    }
-
-    //    return '';
-    //};
-
-    //Alta Oferta
-    //$scope.ofertaAdd= function (oferta)
-    //{
-    //    ofertaDataFactory.postOferta(oferta);
-    //}
-
-    //$scope.cancelOferta = function () {
-    //    $scope.oferta = null;
-    //};
-
-
-    //iafar: Puestos
-
-    $scope.Puestos = ["1"];
-    $scope.CantPuestos = 1;
-   
-
-    $scope.AddPuesto = function () {
-        $scope.Puestos.push("1");
-        ($scope.CantPuestos)++;
+    $scope.result1 = '';
+    //$scope.options1 = null;
+    $scope.options1 = {
+        country: '',
+        types: '(cities)'
     };
-
-
-
-    //$scope.SubRubro=[]
-    //$scope.Puestos = [{ Nombre: "Puesto Nuevo" },
-    //    {cantVacantes:0},
-    //    { Remuneracion: 0.00 },
-    //    { Requisitos: "" },
-    //    {SubRubro:[]},
-    //    { Disponibilidad: "" },
-
-
-
-    //];
-
-    //Dialog Region
+    $scope.details1 = '';
+    //#region Puestos    
+    
+    //#region Dialog Puestos
     $scope.AbrirParaAgregar = function (ev) {
         $mdDialog.show({
             controller: DialogController,
             templateUrl: 'App/Oferta/Partials/AgregarPuesto.html',
             parent: angular.element(document.body),
             targetEvent: ev,
-            clickOutsideToClose: true
+            clickOutsideToClose: true,
+            resolve: {
+                rubroDataFactory: 'rubroDataFactory',
+                listRubros: function (rubroDataFactory) {
+                    return rubroDataFactory.getRubros();
+                }
+            }
         })
-            .then(function (answer) {
-                $scope.status = 'You said the information was "' + answer + '".';
+            .then(function (puesto) {                
+                $scope.listPuestos.push(puesto);                
             }, function () {
-                $scope.status = 'You cancelled the dialog.';
+                //alert('Entra por Cancel');
             });
     };
 
-    function DialogController($scope, $mdDialog) {
+    function DialogController($scope, $mdDialog, listRubros) { // controlador del dialog que devuelve los datos
+        //#region fpaz: inicializacion de variables de scope en el modal
+        $scope.rubros = listRubros;
+        $scope.subrubrosSelect = [];
+        
+        //#endregion
+
         $scope.hide = function () {
             $mdDialog.hide();
         };
         $scope.cancel = function () {
             $mdDialog.cancel();
         };
-        $scope.answer = function (answer) {
-            $mdDialog.hide(answer);
+
+        $scope.resul = {};
+        //fpaz: carga de puestos en la oferta
+        $scope.addPuesto = function (prmPuesto) {
+            var puesto = {};           
+
+            puesto = prmPuesto;
+            puesto.Rubro = $scope.rubroSelect;
+            //delete puesto.Rubro.SubRubros;
+
+            puesto.SubRubros = [];//$scope.subrubrosSelect;
+
+            for (var i in $scope.subrubrosSelect) {
+                for (var j in puesto.Rubro.SubRubros) {
+                    if ($scope.subrubrosSelect[i] == puesto.Rubro.SubRubros[j].Nombre) {
+                        puesto.SubRubros.push(puesto.Rubro.SubRubros[j]);
+                        break;
+                    }                    
+                }
+            }                     
+
+            $scope.resul = puesto;
+            
+            $mdDialog.hide(puesto);
         };
     };
-    //end Region#
+    //#endregion
 
 });

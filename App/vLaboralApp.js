@@ -1,6 +1,6 @@
 ﻿var vLaboralApp = angular.module('vLaboralApp', ['ngResource', 'ui.router', 'ngCookies', 'ngTable',
-  'ngSanitize', 'ngAnimate', 'ct.ui.router.extras', 'angular-loading-bar', 'daypilot', 'LocalStorageModule', 'angular-jwt', 'ngMaterial'
-, 'oc.lazyLoad'])
+  'ngSanitize', 'ngAnimate', 'ngAria', 'ct.ui.router.extras', 'angular-loading-bar', 'daypilot', 'LocalStorageModule', 'angular-jwt', 'ngMaterial'
+, 'oc.lazyLoad', 'ng-mfb', 'ngAutocomplete'])
     .config(function ($stateProvider, $urlRouterProvider, $httpProvider, $stickyStateProvider, cfpLoadingBarProvider) {
 
         cfpLoadingBarProvider.includeSpinner = true;
@@ -146,7 +146,7 @@
                  //#region Ofertas Empleador
                 .state('ofertas', {
                       abstract: true,
-                      url: '/app',
+                      url: '/ofertas',
                       views: {
                           '': {
                               templateUrl: 'views/layout.html'

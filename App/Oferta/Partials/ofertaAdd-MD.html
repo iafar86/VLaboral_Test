@@ -1,94 +1,119 @@
-﻿<div layout="column" >
+﻿<!--<div layout="column" >
     <div layout="row" layout-align="center center">
         <div flex="30">
             <h1>Nueva Oferta</h1>
         </div>
     </div>
-</div>
-<div layout="column" layout-margin layout-fill layout-padding>
-    <div layout="row" layout-align="center center" flex>
-        <div flex="30">
-            <div class="profile-userpic">
-                <img src="../../../../Content/img/companyLogo.png" class="img-responsive" alt="">
+</div>-->
+<div class="row row-sm">
+    <md-datepicker ng-model="birthday"></md-datepicker>
+    <!--#region fpaz: parte con los datos del encabezado de la oferta-->
+    <div class="col-sm-7">
+        <div class="panel panel-card">
+            <div layout="row" layout-align="center center" flex>
+                <div flex="80">
+                    <div class="profile-content">
+                        <form class="form-horizontal">
+                            <div layout="row">
+                                <div flex="grow">
+                                    <md-input-container>
+                                        <label>Nombre de la Oferta</label>
+                                        <input class="form-control md-input" ng-model="oferta.Nombre" required>
+                                    </md-input-container>
+                                </div>
+                            </div>
+                            <div layout="row">
+                                <div flex="100">
+                                    <md-input-container>
+                                        <!--<label>Lugar</label>-->
+                                        <input class="md-input" type="text" ng-autocomplete ng-model="oferta.Lugar" options="options1" details="details1" />
+                                    </md-input-container>
+                                </div>
+                            </div>
+
+                            <md-content>
+                                <div layout="row">
+                                    <div layout="column" flex="40">
+                                        <label>Fecha de Inicio</label>
+                                        <input type="date" ng-model="oferta.FechaInicioConvocatoria" class="form-control">
+                                    </div>
+                                    <div layout="column" flex="auto"></div>
+                                    <div layout="column" flex="40">
+                                        <label>Fecha de Fin</label>
+                                        <input type="date" ng-model="oferta.FechaFinConvocatoria" class="form-control">
+                                    </div>
+                                </div>
+                            </md-content>
+
+
+                            <md-input-container class="md-block autoScroll">
+                                <label>Descripcion</label>
+                                <textarea ng-model="oferta.Descripcion" columns="1" md-maxlength="150"></textarea>
+                            </md-input-container>
+
+                            <div layout="row" layout-align="star center">
+                                <!--<div flex="60"><h2>Agrega puestos en la oferta</h2></div>
+                        <div flex="30"><md-button class="md-fab " aria-label="PuestosAdd" ng-click="AbrirParaAgregar()"><i class="fa fa-plus"></i></md-button> </div>-->
+
+                                <nav mfb-menu position="br" effect="zoomin" label="hover here"
+                                     active-icon="mdi-content-clear" resting-icon="mdi-content-add"
+                                     toggling-method="hover">
+                                    <button mfb-button icon="mdi-social-person-add" label="Agregar Puestos" ng-click="AbrirParaAgregar()"></button>
+                                    <button mfb-button icon="mdi-image-edit" label="Editar Oferta"></button>
+                                    <button mfb-button icon="mdi-content-save" label="Guardar Cambios"></button>
+                                    <button mfb-button icon="mdi-action-delete" label="Eliminar Oferta"></button>
+                                </nav>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+
             </div>
         </div>
     </div>
-    <section>
-        <div layout="row" layout-align="center center" flex >
-            <div flex="70">
-                <div class="profile-content">
-                    <form class="form-horizontal">
-                        <div layout="row">
-                            <div flex="50">
-                                <md-input-container>
-                                    <label>Nombre de la Oferta</label>
-                                    <input class="form-control md-input" required>
-                                </md-input-container>
-                            </div>
-                            
-                            <div flex="50">
-                                <md-input-container>
-                                    <label>Lugar</label>
-                                    <input class="form-control md-input" required>
-                                </md-input-container>
-                            </div>
-                        </div>
-                        
-                        <md-content>
-                            <div layout="row">
-                                <div layout="column" flex="50">
-                                    <label>Fecha de Inicio</label>
-                                    <md-datepicker ng-model="date"></md-datepicker>
-                                </div>
-                                <div layout="column" flex="50">
-                                    <label>Fecha de Fin</label>
-                                    <md-datepicker ng-model="date"></md-datepicker>
-                                </div>
-                            </div>
-                        </md-content>
-                        
+    <!--#endregion-->
 
-                        <md-input-container class="md-block autoScroll">
-                            <label>Descripcion</label>
-                            <textarea ng-model="user.biography" columns="1" md-maxlength="150"></textarea>
-                        </md-input-container>
-                        <!--<br />
-                        <md-divider></md-divider>
-                        <br />-->
-
-                        <div layout="row">
-                            <md-list>
-                                <md-list-item ng-repeat="puesto in puestos">
-                                    <div class="md-list-item-text" layout="column">
-                                        <h3>{{puesto.nombre}}</h3>
-                                        <h2>cantidad: {{cantidad.lugar}}</h2>
+    <!--#region fpaz: listado de los puestos de trabajo de la oferta-->
+    <div class="col-sm-5">
+        <div class="panel panel-card">
+            <div layout="row">
+                <md-content>
+                    <section>
+                        <md-subheader class="md-primary">Puestos de Trabajo de la Oferta</md-subheader>
+                        <md-list layout-padding>
+                            <md-list-item class="md-3-line" ng-repeat="puesto in listPuestos">
+                                <div class="card">
+                                    <div class="card-tools">                                        
+                                        <i class="mdi-action-visibility text-lg m-t-sm pull-left"></i>                                      
                                     </div>
-                                </md-list-item>
-                            </md-list>
 
-                        </div>
-
-
-                        <div layout="row" layout-align="star center">
-
-                            <div flex="60"><h2>Agrega puestos en la oferta</h2></div>
-                            <div flex="30"><md-button class="md-fab " aria-label="PuestosAdd" ng-click="AbrirParaAgregar()"><i class="fa fa-plus"></i></md-button> </div>
-
-
-                        </div>
-                        <!--<div layout="row" layout-align="end left">
-                            <md-button class="mf-fab" ng-click="ofertaAdd()"><i class="fa fa-check"></i></md-button>
-                        </div>-->
-                        
-
-
-                    </form>
-                </div>
-                
+                                    <div class="card-body">
+                                        <i class="mdi-hardware-computer md-avatar text-lg m-t-sm pull-left"></i>
+                                        <!--<img ng-src="{{message.face}}" class="md-avatar" alt="{{message.who}}">-->
+                                        <div class="md-list-item-text">
+                                            <h3>{{puesto.Nombre}}</h3>
+                                            <h4>Vacantes: {{puesto.CantidadDeVacantes}}</h4>
+                                            <p>
+                                                Rubro: {{puesto.Rubro.Nombre}}
+                                            </p>                                            
+                                            <md-chips ng-model="puesto.SubRubros" readonly="true">
+                                                <md-chip-template>
+                                                    <span>
+                                                        <strong>{{$chip.Nombre}}</strong>                                                        
+                                                    </span>
+                                                </md-chip-template>                                                
+                                            </md-chips>
+                                        </div>
+                                    </div>
+                                </div>                                          
+                            </md-list-item>
+                        </md-list>
+                    </section>
+                </md-content>
             </div>
-
         </div>
-
-    </section>
-
+    </div>
+    <!--#endregion-->
 </div>
