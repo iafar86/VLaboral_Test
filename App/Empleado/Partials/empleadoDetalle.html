@@ -1,0 +1,113 @@
+﻿<div layout="row" layout-sm="column" flex>     
+    <md-content layout-padding class="md-whiteframe-z2" flex="30" layout="column" layout-sm="row" flex-sm="100">
+        <md-card class="panel panel-card">
+            <md-card-content>
+                <div class="r-t pos-rlt" md-ink-ripple style="background:url(images/a0.jpg) center center; background-size:cover">
+                    <div class="p-lg bg-white-overlay text-center r-t">
+                        <a href class="w-xs inline">
+                            <img src="images/a0.jpg" class="img-circle img-responsive">
+                        </a>
+                        <div class="m-b m-t-sm h2">
+                            <span class="">{{infoEmpleado.NombreApellido}}</span>
+                        </div>
+
+                        <p>
+                            Web Developer
+                        </p>
+                    </div>
+                </div>
+                <div class="list-group no-radius no-border">
+                    <a class="list-group-item" ui-sref="empleado.perfil.datosPersonales">
+                        Información personal
+                    </a>
+                    <a class="list-group-item" ui-sref="empleado.perfil.datosDeContacto">
+                        Datos de contacto
+                    </a>
+                    <a class="list-group-item">
+                        Resumen Curricular
+                    </a>
+                    <a class="list-group-item" ui-sref="empleado.perfil.calificarEmpleado">
+                        Calificar
+                    </a>
+
+                </div>
+
+            </md-card-content>
+            
+        </md-card>
+    </md-content>
+        
+
+    <md-content class="container" layout="column" layout-sm="column" flex-sm="100" flex="70" ui-view></md-content>
+
+</div>
+
+
+
+
+<!--<md-dialog aria-label="Agregar puesto a la oferta" ng-cloak flex="100">
+    <md-dialog-content style="min-width:800px;max-height:1810px; ">
+        <div layout="column" layout-margin layout-fill layout-padding>
+            <div layout="row" layout-align="center center" flex>
+                <div div flex="50" layout-align="center center" layout="column">
+                    <img src="../../../images/a10.jpg" class="img-circle" alt="" />
+                </div>
+            </div>
+        </div>
+
+        <section>
+            <div layout="row" layout-align="center center" flex>
+                <div flex="70">
+                    <div layout="row">
+                        <div flex>
+                            <h2>Nombre y apellido: {{empleado.NombreApellido}}</h2>
+                        </div>
+
+                    </div>
+
+                    <div layout="row">
+                        <div flex="50">
+                            <h3>Dni: {{empleado.Dni}}</h3>
+                        </div>
+                        <div flex="50">
+                            <h3>Cuil: {{empleado.Cuil}}</h3>
+                        </div>
+                    </div>
+
+                    <div layout="row">
+                        <div flex="50">
+                            <h3>
+                                Fecha de nacimiento: {{empleado.FechaDeNacimiento}}
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div layout="row">
+                        <div flex>
+                            <h3>Direccion: {{empleado.Direccion}}</h3>
+                        </div>
+                    </div>
+
+                    <div layout="row">
+                        <div flex="50">
+                            <h3>Email: {{empleado.Email}}</h3>
+                        </div>
+                        <div flex="50">
+                            <h3>Telefono: {{empleado.Telefono}}</h3>
+                        </div>
+                    </div>
+                    <div layout="row">
+                        <star-rating ng-model="rating.rating1" max="10" on-rating-select="rating.rateFunction(rating)">
+                    </div>
+                    <div layout="column" layout-align="start end">
+                        <md-button class="md-raised md-warn">Calificar</md-button>
+                    </div>
+                </div>
+
+                
+            </div>
+
+            
+        </section>
+    </md-dialog-content>
+</md-dialog>-->

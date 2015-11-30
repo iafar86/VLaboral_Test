@@ -1,6 +1,6 @@
-﻿var vLaboralApp = angular.module('vLaboralApp', ['ngResource', 'ui.router', 'ngCookies', 'ngTable',
-  'ngSanitize', 'ngAnimate', 'ngAria', 'ct.ui.router.extras', 'angular-loading-bar', 'daypilot', 'LocalStorageModule', 'angular-jwt', 'ngMaterial'
-, 'oc.lazyLoad', 'ng-mfb', 'ngAutocomplete'])
+﻿var vLaboralApp = angular.module('vLaboralApp', ['ngResource', 'ngMdIcons', 'ui.router', 'ngCookies', 'ngTable',
+  'ngSanitize', 'ngAnimate', 'ngAria', 'ct.ui.router.extras', 'angular-loading-bar', 'daypilot', 'LocalStorageModule', 'angular-jwt', 'ngMaterial', 
+  'oc.lazyLoad', 'ng-mfb', 'ngAutocomplete', 'angular-input-stars'])
     .config(function ($stateProvider, $urlRouterProvider, $httpProvider, $stickyStateProvider, cfpLoadingBarProvider) {
 
         cfpLoadingBarProvider.includeSpinner = true;
@@ -83,107 +83,116 @@
         
             //#endregion
 
-                    //#region Empleador
-                    .state('empleador', {
-                        abstract: true,
-                        url: '/empleador',
-                        views: {
-                            '': {
-                                templateUrl: 'views/layout.html'
-                            },
-                            'aside': {
-                                templateUrl: 'views/aside.html'
-                            },
-                            'content': {
-                                templateUrl: 'views/content.html'
-                            }
-                        }
-                    })
-                    .state('empleador.info', {
-                        url: '/info',
-                        templateUrl: '/App/Empleador/Partials/empleadorInfo.html',
-                        controller: 'empleadorCtrl',
-                        data: { title: 'Info Empleador' },
-                        resolve: {
-                            empleadorDataFactory: 'empleadorDataFactory',
-                            infoEmpleador: function (empleadorDataFactory) {
-                                return { value: [] };
-                            },
-                            listadoEmpleadores: function (empleadorDataFactory) {
-                                return empleadorDataFactory.query();
-                            },
-                            loadEmpleadorCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
-                                return $ocLazyLoad.load(['App/Empleador/empleadorCtrl.js', 'App/Empleador/empleadorDataFactory.js']);
-                            }],
-                            //infoEmpleador: [function (loadEmpleadorCtrl, empleadorDataFactory) {
-                            //    return empleadorDataFactory.get({ id: 0 });
-                            //}],
-                            //listadoEmpleadores: [function (loadEmpleadorCtrl, empleadorDataFactory) {
-                            //    return { value: [] };
-                            //}]
-                        }
-                    })
-                    .state('empleador.add', {
-                        url: '/add',
-                        templateUrl: '/App/Empleador/Partials/empleadorAdd.html',
-                        controller: 'empleadorCtrl',
-                        data: { title: 'Alta de Empleador' },
-                        resolve: {
-                            empleadorDataFactory: 'empleadorDataFactory',
-                            infoEmpleador: function (empleadorDataFactory) {
-                                return { value: [] };
-                            },
-                            listadoEmpleadores: function (empleadorDataFactory) {
-                                return empleadorDataFactory.query();
-                            },
-                            loadEmpleadorCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
-                                return $ocLazyLoad.load(['App/Empleador/empleadorCtrl.js', 'App/Empleador/empleadorDataFactory.js']);
-                            }]                         
-                        }
-                    })        
-                    //#endregion
+            //#region Empleador
+            .state('empleador', {
+                abstract: true,
+                url: '/empleador',
+                views: {
+                    '': {
+                        templateUrl: 'views/layout.html'
+                    },
+                    'aside': {
+                        templateUrl: 'views/aside.html'
+                    },
+                    'content': {
+                        templateUrl: 'views/content.html'
+                    }
+                }
+            })
+            .state('empleador.info', {
+                url: '/info',
+                templateUrl: '/App/Empleador/Partials/empleadorInfo.html',
+                controller: 'empleadorCtrl',
+                data: { title: 'Info Empleador' },
+                resolve: {
+                    empleadorDataFactory: 'empleadorDataFactory',
+                    infoEmpleador: function (empleadorDataFactory) {
+                        return { value: [] };
+                    },
+                    listadoEmpleadores: function (empleadorDataFactory) {
+                        return empleadorDataFactory.query();
+                    },
+                    loadEmpleadorCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(['App/Empleador/empleadorCtrl.js', 'App/Empleador/empleadorDataFactory.js']);
+                    }],
+                    //infoEmpleador: [function (loadEmpleadorCtrl, empleadorDataFactory) {
+                    //    return empleadorDataFactory.get({ id: 0 });
+                    //}],
+                    //listadoEmpleadores: [function (loadEmpleadorCtrl, empleadorDataFactory) {
+                    //    return { value: [] };
+                    //}]
+                }
+            })
+            .state('empleador.add', {
+                url: '/add',
+                templateUrl: '/App/Empleador/Partials/empleadorAdd.html',
+                controller: 'empleadorCtrl',
+                data: { title: 'Alta de Empleador' },
+                resolve: {
+                    empleadorDataFactory: 'empleadorDataFactory',
+                    infoEmpleador: function (empleadorDataFactory) {
+                        return { value: [] };
+                    },
+                    listadoEmpleadores: function (empleadorDataFactory) {
+                        return empleadorDataFactory.query();
+                    },
+                    loadEmpleadorCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(['App/Empleador/empleadorCtrl.js', 'App/Empleador/empleadorDataFactory.js']);
+                    }]                         
+                }
+            })        
+            //#endregion
 
-                 //#region Ofertas Empleador
-                .state('ofertas', {
-                      abstract: true,
-                      url: '/ofertas',
-                      views: {
-                          '': {
-                              templateUrl: 'views/layout.html'
-                          },
-                          'aside': {
-                              templateUrl: 'views/aside.html'
-                          },
-                          'content': {
-                              templateUrl: 'views/content.html'
-                          }
-                      }
-                  })
-                .state('ofertas.add', {
-                    url: '/add',
-                    templateUrl: '/App/Oferta/Partials/ofertaAdd-MD.html',
-                    controller: 'ofertaCtrl',
-                    data: { title: 'ofertaAddMD' },
-                    resolve: {
-                        loadOfertasCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
-                            return $ocLazyLoad.load(['App/Oferta/ofertaCtrl.js']);
-                        }]
+            //#region Ofertas Empleador
+            .state('ofertas', {
+                    abstract: true,
+                    url: '/ofertas',
+                    views: {
+                        '': {
+                            templateUrl: 'views/layout.html'
+                        },
+                        'aside': {
+                            templateUrl: 'views/aside.html'
+                        },
+                        'content': {
+                            templateUrl: 'views/content.html'
+                        }
                     }
                 })
-                .state('ofertas.lista', {
-                    url: '/ofertas',
-                    templateUrl: '/App/Oferta/Partials/ofertaList-MD.html',
-                    controller: 'ofertaCtrl',
-                    data: { title: 'Listado de Ofertas' },
-                    resolve: {
-                        loadOfertasCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
-                            return $ocLazyLoad.load(['App/Oferta/ofertaCtrl.js']);
-                        }]
-                    }
-                })        
-        //#endregion
+            .state('ofertas.add', {
+                url: '/add',
+                templateUrl: '/App/Oferta/Partials/ofertaAdd-MD.html',
+                controller: 'ofertaCtrl',
+                data: { title: 'Nueva Oferta' },
+                resolve: {
+                    ofertaDataFactory: 'ofertaDataFactory',
+                    listadoOfertas: function (ofertaDataFactory) {
+                        return { value: [] };
+                    },
+                    loadOfertasCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(['App/Oferta/ofertaCtrl.js']);
+                    }]
+                }
+            })
+            .state('ofertas.lista', {
+                url: '/ofertas',
+                templateUrl: '/App/Oferta/Partials/ofertaList-MD.html',
+                controller: 'ofertaCtrl',
+                data: { title: 'Listado de Ofertas' },
+                resolve: {
+                    ofertaDataFactory: 'ofertaDataFactory',
+                    listadoOfertas: function (ofertaDataFactory) {
+                        return ofertaDataFactory.getOfertas();
+                    },
+                    loadOfertasCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(['App/Oferta/ofertaCtrl.js', 'App/Oferta/ofertaDataFactory.js', 'App/Oferta/ofertaFilter.js', 'App/Oferta/OfertaList.css']);
 
-                    //#region Empleados
+                    }]
+                }
+            })
+//#endregion
+
+            //#region Empleados
                     .state('empleado', {
                         abstract: true,
                         url: '/empleados',
@@ -199,9 +208,53 @@
                             }
                         }
                     })
+                    
+                    .state('empleado.list', {
+                        url: '/list',
+                        templateUrl: '/App/Empleado/Partials/empleadoList.html',
+                        controller: 'empleadoCtrl',
+                        data: { title: 'Listado de empleados' },
+                        resolve: {
+                            empleadoDataFactory: 'empleadoDataFactory',
+                            infoEmpleado: function(){
+                                return{value:[]};
+                            },
+                            listadoEmpleados: function (empleadoDataFactory) {
+                                return empleadoDataFactory.getEmpleados();
+                            },
+                            listadoRubros: function () {
+                                return { value: [] };
+                            },
+                            loadEmpleadoCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                                return $ocLazyLoad.load(['App/Empleado/empleadoCtrl.js', 'App/Empleado/empleadoDataFactory.js']);
+                            }]
+                        }
+                    })
                     .state('empleado.perfil', {
                         url: '/perfil/:empleadoId',
-                        templateUrl: '/App/Empleado/Partials/empleadoProfile.html',
+                        templateUrl: '/App/Empleado/Partials/empleadoDetalle.html',
+                        controller: 'empleadoCtrl',
+                        data: { title: 'Info Empleado' },
+                        resolve: {
+                            empleadoDataFactory: 'empleadoDataFactory',
+                            infoEmpleado: function (empleadoDataFactory, $stateParams) {
+                                var empleadoId = $stateParams.empleadoId;
+                                return empleadoDataFactory.getEmpleado(empleadoId);
+                            },
+                            listadoEmpleados: function (empleadoDataFactory) {
+                                return empleadoDataFactory.getEmpleados();
+                            },
+                            listadoRubros: function () {
+                                return { value: [] };
+                            },
+                            loadEmpleadoCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                                return $ocLazyLoad.load(['App/Empleado/empleadoCtrl.js', 'App/Empleado/empleadoDataFactory.js']);
+                            }]                    
+                        }
+                    })
+                    .state('empleado.perfil.datosPersonales', {
+                        url: '/datosPersonales',
+                        templateUrl: '/App/Empleado/Partials/empleadoInfoPersonal.html',
                         controller: 'empleadoCtrl',
                         data: { title: 'Info Empleado' },
                         resolve: {
@@ -218,33 +271,59 @@
                             },
                             loadEmpleadoCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
                                 return $ocLazyLoad.load(['App/Empleado/empleadoCtrl.js', 'App/Empleado/empleadoDataFactory.js']);
-                            }]                    
-                        }
-                    })
-                    .state('empleado.lista', {
-                        url: '/empleados',
-                        templateUrl: '/App/Empleado/Partials/empleadoList.html',
-                        controller: 'empleadoCtrl',
-                        data: { title: 'Listado de Empleados' },
-                        resolve: {
-                            empleadoDataFactory: 'empleadoDataFactory',
-                            infoEmpleado: function () {
-                                return { value: [] };
-                            },
-                            listadoEmpleados: function (empleadoDataFactory) {
-                                return empleadoDataFactory.getEmpleados();
-                            },
-                            listadoRubros: function () {
-                                return { value: [] };
-                            },
-                            loadEmpleadoCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
-                                return $ocLazyLoad.load(['App/Empleado/empleadoCtrl.js', 'App/Empleado/empleadoDataFactory.js']);
                             }]
                         }
                     })
+
+                     .state('empleado.perfil.datosDeContacto', {
+                         url: '/datosDeContacto',
+                         templateUrl: '/App/Empleado/Partials/empleadoDatosDeContacto.html',
+                         controller: 'empleadoCtrl',
+                         data: { title: 'Info Empleado' },
+                         resolve: {
+                             empleadoDataFactory: 'empleadoDataFactory',
+                             infoEmpleado: function (empleadoDataFactory, $stateParams) {
+                                 var empleadoId = $stateParams.empleadoId;
+                                 return empleadoDataFactory.getEmpleado(empleadoId);
+                             },
+                             listadoEmpleados: function () {
+                                 return { value: [] };
+                             },
+                             listadoRubros: function () {
+                                 return { value: [] };
+                             },
+                             loadEmpleadoCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                                 return $ocLazyLoad.load(['App/Empleado/empleadoCtrl.js', 'App/Empleado/empleadoDataFactory.js']);
+                             }]
+                         }
+                     })
+
+
+                     .state('empleado.perfil.calificarEmpleado', {
+                         url: '/calificar',
+                         templateUrl: '/App/Empleado/Partials/calificarEmpleado.html',
+                         controller: 'empleadoCtrl',
+                         data: { title: 'Info Empleado' },
+                         resolve: {
+                             empleadoDataFactory: 'empleadoDataFactory',
+                             infoEmpleado: function (empleadoDataFactory, $stateParams) {
+                                 var empleadoId = $stateParams.empleadoId;
+                                 return empleadoDataFactory.getEmpleado(empleadoId);
+                             },
+                             listadoEmpleados: function () {
+                                 return { value: [] };
+                             },
+                             listadoRubros: function () {
+                                 return { value: [] };
+                             },
+                             loadEmpleadoCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                                 return $ocLazyLoad.load(['App/Empleado/empleadoCtrl.js', 'App/Empleado/empleadoDataFactory.js', 'scripts/directives/angular-input-stars.js', 'styles/angular-input-stars.css']);
+                             }]
+                         }
+                     })
                     .state('empleado.add', {
                         url: '/add',
-                        templateUrl: '/App/Empleado/Partials/empleadoAdd.html',
+                        templateUrl: '/App/Empleado/Partials/empleadoAdd-MD.html',
                         controller: 'empleadoCtrl',
                         data: { title: 'Listado de Empleados' },
                         resolve: {
@@ -263,8 +342,8 @@
                                 return $ocLazyLoad.load(['App/Empleado/empleadoCtrl.js', 'App/Empleado/empleadoDataFactory.js']);
                             }]
                         }
-                    })            
-                   //#endregion
+                    })
+        //#endregion
     })
 
 

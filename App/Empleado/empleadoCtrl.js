@@ -1,4 +1,4 @@
-﻿vLaboralApp.controller('empleadoCtrl', function ($scope, $stateParams, $state, $filter, ngTableParams, empleadoDataFactory, rubroDataFactory
+﻿vLaboralApp.controller('empleadoCtrl', function ($scope, $stateParams, $state, $filter, $mdDialog, ngTableParams, empleadoDataFactory, rubroDataFactory
     , listadoEmpleados, infoEmpleado, listadoRubros) {
     
     //#region Rubro/SubRubro
@@ -60,7 +60,7 @@
         data = $scope.empleados;
     };
     
-    $scope.empleadoAdd = function (empleado) {
+    $scope.empleadoAdd = function (infoEmpleado) {
         alert('entra por empleado add');
         //empleadoDataFactory.postEmpleado(empleado).$promise.then(
         //    function () {
@@ -73,8 +73,9 @@
         //        $scope.errors = response.data;
         //        alert($scope.errors.Message);
         //    });
-        empleadoDataFactory.postEmpleado(empleado);
+        empleadoDataFactory.postEmpleado(infoEmpleado);
         alert('paso el post');
+        $scope.infoEmpleado = {};
     };
 
     $scope.cancelEmpleadoAdd = function () {
@@ -123,6 +124,15 @@
     };
     //#endregion
 
+    $scope.calificacion = [];
+
+
+    //$scope.calificacionFina =l = function () {
+    //    var calificacion = $scope.calificacion.conocimiento1 + $scope.calificacion.conocimiento2 + $scope.calificacion.cumplimiento + $scope.calificacion.cumplimiento2 + $scope.calificacion.conocimiento3 + $scope.calificacion.adaptacion + $scope.calificacion.capacidad + $scope.calificacion.ajuste + $scope.calificacion.ajuste2 + $scope.calificacion.ajuste3;
+    //    var promedioCalificacion = Math.floor(calificacion);
+    //    $scope.
+    //};
+
     //#region Paginacion y llenado y filtrado de la tabla dinamica de empleados
     //$scope.tableParams = new ngTableParams({
     //    page: 1,            // show first page
@@ -148,5 +158,42 @@
     //    }
     //});
     //#endregion
+
+    //#region Trae un empleado en particular
+
+    $scope.mostrarDetalle = function (empleadoId, ev) {
+        var empleado = empleadoDataFactory.getEmpleado(empleadoId);
+        $mdDialog.show({
+            controller: DialogController,
+            templateUrl: 'App/Empleado/Partials/empleadoDetalle.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true
+        })
+        .then(function (answer) {
+            $scope.status = 'You said the information was "' + answer + '".';
+        }, function () {
+            $scope.status = 'You cancelled the dialog.';
+        });
+    };
+
+    function DialogController($scope, $mdDialog) {
+        $scope.hide = function () {
+            $mdDialog.hide();
+        };
+        $scope.cancel = function () {
+            $mdDialog.cancel();
+        };
+        $scope.answer = function (answer) {
+            $mdDialog.hide(answer);
+        };
+    };
+    //endregion
+    
+
+
+    
+
+
 
 });

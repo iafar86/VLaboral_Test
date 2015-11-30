@@ -1,0 +1,149 @@
+﻿<md-card>
+    <md-card-content>
+        <div layout="column" layout-padding>
+            <div layout="row" layout-align="center center">
+                <div layout="column" layout-align="center center" flex="30">
+                    <h1>Nuevo Empleado</h1>
+                </div>
+            </div>
+        </div>
+        <div layout="column" layout-margin layout-fill layout-padding>
+            <div layout="row" layout-align="center center" flex="">
+                <div flex="30" layout-align="center center" layout="column">
+                    <button class="profile-sidebar md-button md-default-theme">
+
+                        <!-- SIDEBAR USERPIC -->
+                        <div class="profile-userpic ng-scope">
+                            <img src="../../../../Content/img/companyLogo.png" class="img-responsive" alt="">
+                        </div>
+                        <!-- END SIDEBAR USERPIC -->
+                        <!-- SIDEBAR USER TITLE -->
+                        <div class="profile-usertitle ng-scope">
+                            <div class="profile-usertitle-name ng-binding">
+
+                            </div>
+                            <div class="profile-usertitle-job">
+                                Cargar Foto
+                            </div>
+                        </div>
+                        <!-- END SIDEBAR USER TITLE -->
+                        <!-- SIDEBAR BUTTONS -->
+                        <md-button class="md-fab">
+                            <i class=" fa fa-camera fa-2x"></i>
+                            <!--<button type="button" class="btn btn-primary btn-sm">Editar Imagen</button>
+                        <button type="button" class="btn btn-success btn-sm">Guardar Perfil</button>-->
+                        </md-button>
+                        <!-- END SIDEBAR BUTTONS -->
+                        <div class="md-ripple-container"></div>
+                    </button>
+                </div>
+
+            </div>
+            <section>
+                <div layout="row" layout-align="center center" flex>
+                    <div flex="70">
+                        <form class="form-horizontal ">
+                            <div layout="row">
+                                <div flex="50">
+                                    <md-input-container class=" md-block">
+                                        <label>DNI</label>
+
+                                        <input class="form-control " ng-model="infoEmpleado.Dni" required>
+                                    </md-input-container>
+                                </div>
+
+
+                                <div flex="50">
+                                    <md-input-container class="md-block">
+                                        <label>Cuil</label>
+                                        <input type="text" class="form-control" ng-model="infoEmpleado.Cuil"/>
+                                    </md-input-container>
+                                </div>
+                            </div>
+                            <div layout="row">
+                                <div flex="50">
+                                    <md-input-container class="md-default-theme md-input-invalid">
+                                        <label>Nombre</label>
+                                        <input class="form-control" required ng-model="infoEmpleado.NombreApellido" />
+                                    </md-input-container>
+                                </div>
+
+
+                                <div flex="50">
+                                    <md-input-container>
+                                        <label>Apellido</label>
+                                        <input class="form-control" />
+                                    </md-input-container>
+                                </div>
+
+                            </div>
+
+                            <div layout="row">
+                                <md-content>
+                                    <label>Fecha de nacimiento</label>
+                                    <input placeholder="Fecha de nacimiento" type="date" class="md-input form-control" name="fecha" aria-label="guardarEmpleado" ng-model="infoEmpleado.FecNacimiento">
+                                    <!--<md-datepicker ng-model="myDate" placeholder="Enter date"></md-datepicker>-->
+                                </md-content>
+
+
+                            </div>
+
+                            <div layout="row">
+                                <div flex="50">
+                                    <md-input-container class="md-default-theme md-input-invalid">
+                                        <label>Direccion</label>
+
+                                        <input type="text" class="form-control" ng-model="infoEmpleado.Direccion" />
+                                    </md-input-container>
+                                </div>
+                                <div flex="50">
+                                    <md-input-container class="md-default-theme md-input-invalid">
+                                        <label>Telefono</label>
+
+                                        <input class="form-control" type="text" ng-model="infoEmpleado.Telefono" />
+                                    </md-input-container>
+                                </div>
+                            </div>
+
+                            <div layout="row">
+                                <div flex="100">
+                                    <md-input-container class="md-default-theme md-input-invalid">
+                                        <label>E-Mail</label>
+
+                                        <input type="email" class="form-control" ng-model="infoEmpleado.Email" />
+                                    </md-input-container>
+                                </div>
+
+                            </div>
+
+                            <div layout="row">
+                                <div flex>
+                                    <label>¿Crear cuenta en UnMundo.com?</label>
+                                    <md-switch ng-model="crearCuenta" ng-true-value="'Si por supuesto!'" ng-false-value="'El se la creara por si mismo'">
+                                        {{crearCuenta}}
+                                    </md-switch>
+                                </div>
+                            </div>
+
+                            <div layout="row" layout-align="end center">
+                                <md-button class="md-fab " ng-click="empleadoAdd(infoEmpleado)">
+                                    <i class="fa fa-check fa-2x "></i>
+
+                                </md-button>
+                            </div>
+                        </form>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+    </md-card-content>
+</md-card>

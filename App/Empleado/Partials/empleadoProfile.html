@@ -1,4 +1,67 @@
-﻿<div class="container">
+﻿<div layout="column" layout-margin layout-fill layout-padding>
+    <div layout="row" layout-align="center center" flex>
+        <div div flex="50" layout-align="center center" layout="column">
+            <img src="../../../images/a10.jpg" class="img-circle" alt="" />
+        </div>
+    </div>
+</div>
+
+<section>
+    <div layout="row" layout-align="center center" flex>
+        <div flex="70">
+            <div layout="row">
+                <div flex>
+                    <h2>Nombre y apellido: {{empleado.NombreApellido}}</h2>
+                </div>
+
+            </div>
+
+            <div layout="row">
+                <div flex="50">
+                    <h3>Dni: {{empleado.Dni}}</h3>
+                </div>
+                <div flex="50">
+                    <h3>Cuil: {{empleado.Cuil}}</h3>
+                </div>
+            </div>
+
+            <div layout="row">
+                <div flex="50">
+                    <h3>
+                        Fecha de nacimiento: {{empleado.FechaDeNacimiento}}
+                    </h3>
+                </div>
+            </div>
+
+            <div layout="row">
+                <div flex>
+                    <h3>Direccion: {{empleado.Direccion}}</h3>
+                </div>
+            </div>
+
+            <div layout="row">
+                <div flex="50">
+                    <h3>Email: {{empleado.Email}}</h3>
+                </div>
+                <div flex="50">
+                    <h3>Telefono: {{empleado.Telefono}}</h3>
+                </div>
+            </div>
+            <div layout="row">
+                <!--<star-rating ng-model="rating.rating1" max="10" on-rating-select="rating.rateFunction(rating)">-->
+            </div>
+            <div layout="column" layout-align="start end">
+                <md-button class="md-raised md-warn">Calificar</md-button>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</section>
+
+<div class="container">
     <div class="row profile">
         <div class="col-md-3">
             <div class="profile-sidebar">
