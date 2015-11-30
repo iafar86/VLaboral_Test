@@ -6,7 +6,7 @@
 //        );
 //});
 
-vLaboralApp.factory('ofertaDataFactory', function ($http) {
+vLaboralApp.factory('ofertaDataFactory', function ($http,$q) {
 
     var urlApi = "http://localhost:32069"; //fpaz: url del web api de cuentas de usuario, cambiar por el de produccion una vez implementado
     var ofertaDataFactory = {};
@@ -30,15 +30,25 @@ vLaboralApp.factory('ofertaDataFactory', function ($http) {
     };
 
     var _postOferta = function (data) { //alta de una oferta en particular
-        return $http.post(urlApi + '/api/Ofertas/', data).then(function (response) {
-            return response;
-        });
+        var deferred = $q.defer();
+
+        //return $http.post(urlApi + '/api/Ofertas/', data).then(function (response) {
+        //    return response;
+        //});
+        $http.post(urlApi + '/api/Ofertas/', data).then(
+            function (response) {
+                deferred.resolve(response);
+            },
+            function (response) {
+                deferred.reject(response.data);
+            });
+        return deferred.promise;
     };
 
     ofertaDataFactory.getOfertas = _getOfertas;
     ofertaDataFactory.getOfertas_Empleador = _getOfertas_Empleador;
     ofertaDataFactory.getOfertas_Busqueda = _getOfertas_Busqueda;
-    ofertaDataFactory.postOfertas = _postOfertas;
+    ofertaDataFactory.postOfertas = _postOferta;
 
     return ofertaDataFactory;
 
