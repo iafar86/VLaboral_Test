@@ -58,7 +58,7 @@
                             <md-list>
                                 <md-list-item class="md-3-line" ng-repeat="oferta in ofertas | ofertaFilter:search:estado">
                                     <!--<md-list-item class="md-3-line" ng-repeat="oferta in ofertas | ofertaFilter:search:estado">-->
-                                    <md-button class="inline-block animate-show" layout="row" flex>
+                                    <md-button class="inline-block animate-show" layout="row" ng-click="prueba(oferta.Nombre)" flex>
                                         <div layout="row">
                                             <div flex="15">
                                                 <ng-md-icon icon="visibility_off" style="fill: #353434" size="50" flex="10"></ng-md-icon>

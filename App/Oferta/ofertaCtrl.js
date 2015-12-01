@@ -104,6 +104,13 @@
     };
     //#endregion
 
+
+    //#region prueba 
+    $scope.prueba = function (cadena) {
+        alert(cadena);
+    }
+    //#endregion
+
 });
 
 
