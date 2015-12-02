@@ -1,19 +1,27 @@
 ﻿<div layout="column" class="relative" layout-fill role="main" style="position:relative">
     <!--#region Boton flotante-->
-    <md-button class="mmd-btn md-fab md-fab-bottom-right pos-fix teal" aria-label="Plus" ui-sref="ofertas.add">
-        <i class="mdi-content-add"></i>
-    </md-button>
+    <div layout="row" layout-align="star center">
+        <nav mfb-menu position="br" effect="zoomin" label="Herramientas"
+             active-icon="mdi-content-clear" resting-icon="mdi-content-add"
+             toggling-method="hover">
+            <button mfb-button icon="mdi-social-person-add" label="Agregar Puestos"></button>
+            <button mfb-button icon="mdi-image-edit" label="Editar Oferta"></button>
+            <button mfb-button icon="mdi-content-save" label="Guardar Cambios"></button>
+            <button mfb-button icon="mdi-action-delete" label="Eliminar Oferta"></button>
+        </nav>
+    </div>
     <!--#endregion-->
     <!--#region Panel de resultados-->
     <md-content style="background-color:#eee" flex>
         <div layout="row" layout-fill layout-padding>
-
             <md-card flex="30">
                 <md-card-content layout="column" layout-align="center center">
-                    <div class="md-media-xl card-media rounded">
-                        <!--iafar:Aqui se puede poner una imagen-->
-                        <ng-md-icon icon="business" style="fill: #abcdef" size="200"></ng-md-icon>
-                    </div>
+                    <md-button class="inline-block animate-show" layout="row" flex>
+                        <div class="md-media-xl card-media rounded">
+                            <!--iafar:Aqui se puede poner una imagen-->
+                            <ng-md-icon icon="business" style="fill: #abcdef" size="200"></ng-md-icon>
+                        </div>
+                    </md-button>
                     <span class="md-headline">Razon social {{infoEmpleador.Rsocial}}</span>
                     <span class="md-subhead">Rubro {{infoEmpleador.Subrubro}}</span>
                 </md-card-content>
