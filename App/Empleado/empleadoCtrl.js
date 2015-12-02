@@ -103,8 +103,8 @@
                 });
     };
 
-    $scope.cancel = function () {
-        $scope.infoEmpleado = empleadoDataFactory.get({ id: infoEmpleado.Id })
+    $scope.cancel = function (empleadoId) {
+        $scope.infoEmpleado = empleadoDataFactory.getEmpleado({ id: empleadoId })
         $scope.editValue = false;
     };
 
