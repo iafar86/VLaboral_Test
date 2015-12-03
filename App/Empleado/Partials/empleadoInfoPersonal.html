@@ -1,0 +1,72 @@
+﻿<div layout="row" flex flex-sm>
+
+        <div flex>
+            <md-card>
+                <md-card-content>
+                    <div layout="row">
+
+                        <div layout="row" flex="50">
+                            <div ng-show="editValue" flex="40">
+                                <h3>Dni</h3>
+                                <input class="form-control md-input" ng-model="infoEmpleado.Dni" placeholder="{{infoEmpleado.Dni}}" required />
+                            </div>
+                            <div class="md-2-line" ng-hide="editValue">
+                                <h3>Dni</h3>
+
+                                <h4>{{infoEmpleado.Dni}}</h4>
+                            </div>
+                        </div>
+                        <div layout="row" flex="50">
+                            <div ng-show="editValue" flex="40">
+                                <h3>Cuil</h3>
+                                <input class="form-control md-input" ng-model="infoEmpleado.Cuil" placeholder="{{infoEmpleado.Cuil}}" required />
+                            </div>
+                            <div class="md-2-line" ng-hide="editValue">
+                                <h3>Cuil</h3>
+                                <h4>{{infoEmpleado.Cuil}}</h4>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div layout="row">
+                        <div layout="row" flex="50">
+                            <div ng-show="editValue" flex="40">
+                                <h3>Dirección</h3>
+                                <input class="form-control md-input" ng-model="infoEmpleado.Direccion" placeholder="{{infoEmpleado.Direccion}}" required />
+                            </div>
+                            <div class="md-2-line" ng-hide="editValue">
+                                <h3>Dirección</h3>
+                                <h4>{{infoEmpleado.Direccion}}</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div layout="row" flex="30">
+                        <div ng-show="editValue" flex="40">
+                            <h3>Fecha de nacimiento</h3>
+                            <input type="date" class="form-control md-input" ng-model="infoEmpleado.FecNacimiento" placeholder="{{infoEmpleado.FecNacimiento}}" required />
+                        </div>
+                        <div class="md-2-line" ng-hide="editValue">
+                            <h3>Fecha de nacimiento</h3>
+                            <h4>{{infoEmpleado.FecNacimiento}}</h4>
+                        </div>
+                    </div>
+                    <div layout="row" flex layout-align="end end">
+                        <md-button label="Agregar empleado" ng-click="edit()" ng-hide="editValue" class="md-raised md-warn">Editar</md-button>
+                        <md-button label="Guardar Cambios" ng-click="save(infoEmpleado.Id, infoEmpleado)" ng-show="editValue" class="md-raised md-primary">Guardar</md-button>
+                        <md-button label="Cancelar" ng-click="cancel({empleadoId: infoEmpleado.Id})" ng-show="editValue" class="md-raised md-warn">Cancelar</md-button>
+                    </div>
+                    <!--<md-button mfb-menu effect="zoomin" label="herramientas"
+                         active-icon="mdi-content-clear" resting-icon="mdi-content-add"
+                         >
+                        
+                        <button mfb-button icon="mdi-action-dns" label="guardar cambios" ng-click="save(infoempleado.id, infoempleado)" ng-show="editvalue"></button>
+                        
+                        <button mfb-button icon="mdi-action-assignment-returned" label="volver al listado" ui-sref="empleado.list"></button>
+                    </md-button>-->
+
+                </md-card-content>
+            </md-card>         
+</div>  
+
+</div>
