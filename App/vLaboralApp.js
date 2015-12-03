@@ -46,6 +46,16 @@
                 }]
             }
         })
+            .state('seguridad.confirm', {
+                url: '/confirm',
+                templateUrl: '/App/Seguridad/Partials/confirmCuenta.html',
+                controller: 'loginCtrl',
+                resolve: {
+                    loadLoginCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(['App/Seguridad/loginCtrl.js']);
+                    }]
+                }
+            })
         //#endregion
 
             //#region Dashboard
