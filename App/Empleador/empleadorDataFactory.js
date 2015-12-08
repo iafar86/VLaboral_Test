@@ -1,5 +1,7 @@
 ﻿vLaboralApp.factory('empleadorDataFactory', function ($resource) {
-    var urlApi = "http://localhost:32069"; //iafar: apuntando a la direccion de la URL de la WebApi, esto se debe reemplazar cuando este implementado en azure
+    //fpaz: url del web api de cuentas de usuario, cambiar por el de produccion una vez implementado
+    //var urlApi = "http://localhost:32069"; //desarrollo
+    var urlApi = "http://vlaboralapi.azurewebsites.net"; //azure
     return $resource(urlApi + 'api/Empleadores/:id',
            { id: '@id' },
            { 'update': { method: 'PUT' } }

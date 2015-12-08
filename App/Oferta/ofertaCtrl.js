@@ -6,6 +6,7 @@
     $scope.ofertas= listadoOfertas;
     $scope.estado = "PENDIENTE"
     //#endregion
+
     //#region Puestos    
     $scope.AbrirParaAgregar = function (ev) {
         $mdDialog.show({
@@ -73,12 +74,11 @@
 
     //#region fpaz: Alta de oferta
     $scope.addOferta = function (oferta) {
-        alert('Entra por Alta de Oferta');
+        //alert('Entra por Alta de Oferta');
         var authentication = authSvc.authentication;
         oferta.Publico = true;
-        oferta.Estado = 'Abierta';
-        oferta.EmpleadorId = authentication.empleadorId;
-        //oferta.EmpleadorId = 13;
+        oferta.Estado = 'PUBLICADA';
+        oferta.EmpleadorId = authentication.empleadorId;        
         for (var i in oferta.Puestos) {            
             delete oferta.Puestos[i].Rubro;
             for (var j in oferta.Puestos[i].SubRubros) {
@@ -91,6 +91,7 @@
         }
         ofertaDataFactory.postOfertas(oferta).then(function (response) {
             alert("Carga de Oferta Exitosa");
+            $scope.limpiar();
             },
          function (err) {
              if (err) {
@@ -99,8 +100,6 @@
                  //$scope.message = err.error_description;
              }
          });
-
-        alert('paso el post');
     };
     //#endregion
 
@@ -108,6 +107,13 @@
     //#region prueba 
     $scope.prueba = function (cadena) {
         alert(cadena);
+    }
+    //#endregion
+
+    //#region limpeza de formulario
+    $scope.limpiar = function () {
+        $scope.oferta = {};
+        $scope.oferta.Puestos = [];        
     }
     //#endregion
 

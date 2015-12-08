@@ -8,7 +8,9 @@
 
 vLaboralApp.factory('ofertaDataFactory', function ($http,$q) {
 
-    var urlApi = "http://localhost:32069"; //fpaz: url del web api de cuentas de usuario, cambiar por el de produccion una vez implementado
+    //fpaz: url del web api de cuentas de usuario, cambiar por el de produccion una vez implementado
+    //var urlApi = "http://localhost:32069"; //desarrollo
+    var urlApi = "http://vlaboralapi.azurewebsites.net"; //azure
     var ofertaDataFactory = {};
 
     var _getOfertas = function () { // trae todos las ofertas
