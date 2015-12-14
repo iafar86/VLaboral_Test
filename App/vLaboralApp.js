@@ -116,11 +116,12 @@
                 data: { title: 'Info Empleador' },
                 resolve: {
                     empleadorDataFactory: 'empleadorDataFactory',
-                    infoEmpleador: function (empleadorDataFactory) {
-                        return { value: [] };
+                    infoEmpleador: function (empleadorDataFactory, authSvc) {                      
+                        //return authSvc.authentication.empleadorId;
+                        return empleadorDataFactory.getEmpleador(1);
                     },
                     listadoEmpleadores: function (empleadorDataFactory) {
-                        return empleadorDataFactory.query();
+                        return { value: [] };
                     },
                     loadEmpleadorCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
                         return $ocLazyLoad.load(['App/Empleador/empleadorCtrl.js', 'App/Empleador/empleadorDataFactory.js']);

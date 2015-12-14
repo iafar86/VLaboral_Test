@@ -3,11 +3,10 @@
     <div layout="row" layout-align="star center">
         <nav mfb-menu position="br" effect="zoomin" label="Herramientas"
              active-icon="mdi-content-clear" resting-icon="mdi-content-add"
-             toggling-method="hover">
-            <button mfb-button icon="mdi-social-person-add" label="Agregar Puestos"></button>
-            <button mfb-button icon="mdi-image-edit" label="Editar Oferta"></button>
-            <button mfb-button icon="mdi-content-save" label="Guardar Cambios"></button>
-            <button mfb-button icon="mdi-action-delete" label="Eliminar Oferta"></button>
+             toggling-method="hover">            
+            <button mfb-button icon="mdi-image-edit" label="Editar Informacia&oacute;n" ng-click="edit()"></button>
+            <button mfb-button icon="mdi-content-save" label="Guardar Cambios" ng-click="save(infoEmpleador)" ng-disabled="!editValue"></button>
+            <button mfb-button icon="mdi-action-delete" label="Cancelar Cambios" ng-click="cancel()"> </button>
         </nav>
     </div>
     <!--#endregion-->
@@ -33,13 +32,13 @@
                         <ng-md-icon icon="perm_identity" size="35" style="fill:green"></ng-md-icon>
                         <div flex>
                             <label>Cuil</label>
-                            <input ng-model="infoEmpleador.Cuit" type="text">
+                            <input ng-model="infoEmpleador.Cuit" type="text" ng-disabled="!editValue">
                         </div>
                     </md-input-container>
                     <md-input-container layout="row" layout-align="center end" flex>
                         <div flex>
                             <label>Razon Social</label>
-                            <input ng-model="infoEmpleador.Rsocial" type="text">
+                            <input ng-model="infoEmpleador.Rsocial" type="text" ng-disabled="!editValue">
                         </div>
                     </md-input-container>
                 </md-content>
@@ -48,21 +47,22 @@
                         <ng-md-icon icon="place" size="35" style="fill:#000000"></ng-md-icon>
                         <div flex>
                             <label>Dirección</label>
-                            <input ng-model="infoEmpleador.Dir" type="text">
+                            <input class="md-input" type="text" ng-autocomplete ng-model="infoEmpleador.Dir" ng-disabled="!editValue" options="options1" details="details1" />
+                            <!--<input ng-model="infoEmpleador.Dir" type="text" ng-disabled="!editValue">-->
                         </div>
                     </md-input-container>
                     <md-input-container layout="row" layout-align="center end" flex="30">
                         <ng-md-icon icon="local_phone" size="35" style="fill:darkblue"></ng-md-icon>
                         <div flex>
                             <label>Telefono</label>
-                            <input ng-model="infoEmpleador.Tel" type="text">
+                            <input ng-model="infoEmpleador.Tel" type="text" ng-disabled="!editValue">
                         </div>
                     </md-input-container>
                     <md-input-container layout="row" layout-align="center end" flex="30">
                         <ng-md-icon icon="email" size="35" style="fill:#808080"></ng-md-icon>
                         <div flex>
                             <label>Correo electronico</label>
-                            <input ng-model="infoEmpleador.Mail" type="email" placeholder="Email (requerido)" ng-required="true">
+                            <input ng-model="infoEmpleador.Mail" type="email" placeholder="Email (requerido)" ng-required="true" ng-disabled="!editValue">
                         </div>
                     </md-input-container>
                 </md-content>
