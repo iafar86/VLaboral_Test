@@ -5,6 +5,16 @@
     $scope.oferta.Puestos = [];
     $scope.ofertas= listadoOfertas;
     $scope.estado = "PENDIENTE"
+
+    //#region fpaz: variables de configuracion del location
+    $scope.result1 = '';    
+     $scope.options1 = {
+                country: '',
+                types: '(cities)'
+            };
+     $scope.details1 = '';
+    //#endregion
+
     //#endregion
 
     //#region Puestos    
