@@ -331,6 +331,29 @@
                              }]
                          }
                      })
+                    
+                    .state('empleado.perfil.incidencias', {
+                        url: '/incidencias',
+                        templateUrl: '/App/Empleado/Partials/timeLine.html',
+                        controller: 'empleadoCtrl',
+                        data: { title: 'Incidencias' },
+                        resolve: {
+                            empleadoDataFactory: 'empleadoDataFactory',
+                            infoEmpleado: function (empleadoDataFactory, $stateParams) {
+                                var empleadoId = $stateParams.empleadoId;
+                                return empleadoDataFactory.getEmpleado(empleadoId);
+                            },
+                            listadoEmpleados: function () {
+                                return { value: [] };
+                            },
+                            listadoRubros: function () {
+                                return { value: [] };
+                            },
+                            loadEmpleadoCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                                return $ocLazyLoad.load(['App/Empleado/empleadoCtrl.js', 'App/Empleado/empleadoDataFactory.js', 'scripts/directives/angular-input-stars.js', 'styles/angular-input-stars.css']);
+                            }]
+                        }
+                    })
                     .state('empleado.add', {
                         url: '/add',
                         templateUrl: '/App/Empleado/Partials/empleadoAdd-MD.html',

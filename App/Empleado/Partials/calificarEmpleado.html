@@ -2,35 +2,42 @@
 
         <div flex>
             <md-card>
+                <md-toolbar>
+                    <div class="md-toolbar-tools">
+                        <h2>
+                            <span>Capacidad técnica</span>
+                        </h2>                 
+                    </div>
+                </md-toolbar>
                 <md-card-content>
                     <div layout="column" flex>
-                        <h2>Capacidad técnica</h2>
+                        
                         <div layout="row" flex>
                             <div class="form-horizontal">
                              <label>Conocimiento de la compañía /departamento /equipo</label>
-                             <input-stars max="5" ng-model="calificacion.conocimiento1"></input-stars>
+                                <input-stars max="5" ng-model="calificacion.conocimiento1" ng-blur="calificacionTotal()"></input-stars>
                             </div>
                             
                         </div>
                         <div layout="row" flex>
                             <label> Conocimiento del producto/ servicio</label>
-                            <input-stars max="5" ng-model="calificacion.conocimiento2"></input-stars>
+                            <input-stars max="5" ng-model="calificacion.conocimiento2" ng-blur="calificacionTotal()"></input-stars>
                         </div>
                         <div layout="row" flex>
                             <label> Cumplimiento de plazos de entrega</label>
-                            <input-stars max="5" ng-model="calificacion.cumplimiento"></input-stars>
+                            <input-stars max="5" ng-model="calificacion.cumplimiento" ng-blur="calificacionTotal()"></input-stars>
                         </div>
                         <div layout="row" flex>
                             <label>  Cumplimiento de resultados en la tarea</label>
-                            <input-stars max="5" ng-model="calificacion.cumplimiento2"></input-stars>
+                            <input-stars max="5" ng-model="calificacion.cumplimiento2" ng-blur="calificacionTotal()"></input-stars>
                         </div>
                         <div layout="row" flex>
                             <label> Conocimiento de los procesos y procedimiento</label>
-                            <input-stars max="5" ng-model="calificacion.conocimiento3"></input-stars>
+                            <input-stars max="5" ng-model="calificacion.conocimiento3" ng-blur="calificacionTotal()"></input-stars>
                         </div>
                         <md-divider></md-divider>
 
-                        <h2>Disponibilidad psicológica.</h2>
+                        <!--<h2>Disponibilidad psicológica.</h2>
                         <div layout="row" flex>
                             <label> Adaptación al cambio</label>
                             <input-stars max="5" ng-model="calificacion.adaptacion"></input-stars>
@@ -44,21 +51,75 @@
                             <input-stars max="5" ng-model="calificacion.ajuste"></input-stars>
                         </div>
                         <div layout="row" flex>
-                            <label>Ajuste a los procesos y procedimientos</label>
+                            <label>Iniciativa</label>
                             <input-stars max="5" ng-model="calificacion.ajuste2"></input-stars>
                         </div>
                         <div layout="row" flex>
-                            <label>Ajuste a los procesos y procedimientos</label>
+                            <label>Enfoque positivo</label>
                             <input-stars max="5" ng-model="calificacion.ajuste3"></input-stars>
-                        </div>
-                        <md-divider></md-divider>
-                        <div flex>
-                            <h2>Calificacion Total</h2>
-                            {{(calificacion.conocimiento1 + calificacion.conocimiento2 + $scope.calificacion.cumplimiento + calificacion.cumplimiento2 + calificacion.conocimiento3 + calificacion.adaptacion + calificacion.capacidad + calificacion.ajuste + calificacion.ajuste2 + calificacion.ajuste3)/10}}
-                            <input-stars max="5" ng-model='(calificacion.conocimiento1 + calificacion.conocimiento2 + $scope.calificacion.cumplimiento + calificacion.cumplimiento2 + calificacion.conocimiento3 + calificacion.adaptacion + calificacion.capacidad + calificacion.ajuste + calificacion.ajuste2 + calificacion.ajuste3)/10'></input-stars>
-                        </div>
+                        </div>-->
+                        
+                        
                     </div>
 
+                </md-card-content>
+            </md-card>
+            <md-card>
+                <md-toolbar>
+                    
+                    <div class="md-toolbar-tools">
+                        <h2>
+                            <span>
+
+                                Disponibilidad psicológica.
+                            </span>
+                        </h2>
+                        
+                    </div>
+                </md-toolbar>
+                <md-card-content>
+                    
+                    <div layout="row" flex>
+                        <label> Adaptación al cambio</label>
+                        <input-stars max="5" ng-model="calificacion.adaptacion" ng-blur="calificacionTotal()"></input-stars>
+                    </div>
+                    <div layout="row" flex>
+                        <label> Capacidad de automotivación</label>
+                        <input-stars max="5" ng-model="calificacion.capacidad" ng-blur="calificacionTotal()"></input-stars>
+                    </div>
+                    <div layout="row" flex>
+                        <label>Ajuste a los procesos y procedimientos</label>
+                        <input-stars max="5" ng-model="calificacion.ajuste" ng-blur="calificacionTotal()"></input-stars>
+                    </div>
+                    <div layout="row" flex>
+                        <label>Iniciativa</label>
+                        <input-stars max="5" ng-model="calificacion.ajuste2" ng-blur="calificacionTotal()"></input-stars>
+                    </div>
+                    <div layout="row" flex>
+                        <label>Enfoque positivo</label>
+                        <input-stars max="5" ng-model="calificacion.ajuste3" ng-blur="calificacionTotal()"></input-stars>
+                    </div>
+                    <md-divider></md-divider>
+                </md-card-content>
+            </md-card>
+
+            <md-card>
+                <md-toolbar class="md-accent">
+                    <div class="md-toolbar-tools">
+                        <h2>
+                            <span>Calificacion Total</span>
+                        </h2>
+                    </div>
+                </md-toolbar>
+                <md-card-content>
+                    
+                    <div flex>
+                        
+                        {{resultado = (calificacion.conocimiento1 + calificacion.conocimiento2 + calificacion.cumplimiento + calificacion.cumplimiento2 + calificacion.conocimiento3 + calificacion.adaptacion + calificacion.capacidad + calificacion.ajuste + calificacion.ajuste2 + calificacion.ajuste3)/10}}
+                        <input-stars max="5" ng-model="resultado"  readonly></input-stars>
+                        <!--'(calificacion.conocimiento1 + calificacion.conocimiento2 + calificacion.cumplimiento + calificacion.cumplimiento2 + calificacion.conocimiento3 + calificacion.adaptacion + calificacion.capacidad + calificacion.ajuste + calificacion.ajuste2 + calificacion.ajuste3)/10'-->
+                    </div>
+                    <md-divider></md-divider>
                 </md-card-content>
             </md-card>
         </div>
