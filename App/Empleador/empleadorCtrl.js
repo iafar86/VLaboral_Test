@@ -71,9 +71,9 @@
     //#endregion
 
     //#region Limpieza de Formularios
-    $scope.cancel = function () { //fpaz: funcion para cancelar una modificacion u otra operacion y traer los datos originales del empleador        
+    $scope.cancel = function (prmIdEmpleador) { //fpaz: funcion para cancelar una modificacion u otra operacion y traer los datos originales del empleador        
         //$scope.infoEmpleador = empleadorDataFactory.getEmpleadors(authSvc.authentication.empleadorId)
-        empleadorDataFactory.getEmpleador(1).then(function (response) {
+        empleadorDataFactory.getEmpleador(prmIdEmpleador).then(function (response) {
             $scope.infoEmpleador = response.data;            
             $scope.editValue = false;
         },

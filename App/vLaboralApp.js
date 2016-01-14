@@ -87,7 +87,7 @@
             })
             .state('app.perfil', {
                 url: '/perfilUsuario',
-                templateUrl: 'views/pages/settings.html',
+                templateUrl: 'App/Usuarios/Partials/infoUsuario.html',
                 data: { title: 'Perfil de Usuario' }
             })
         
@@ -355,6 +355,28 @@
                             }]
                         }
                     })
+                        .state('empleado.habilidades', {
+                            url: '/rubroHabilidades',
+                            templateUrl: '/App/Empleado/Partials/empleadoHabilidadesCurriculum.html',
+                            controller: 'empleadoCtrl',
+                            data: { title: 'Habilidades' },
+                            resolve: {
+                                empleadoDataFactory: 'empleadoDataFactory',
+                                rubroDataFactory: 'rubroDataFactory',
+                                infoEmpleado: function () {
+                                    return { value: [] };
+                                },
+                                listadoEmpleados: function () {
+                                    return { value: [] };
+                                },
+                                listadoRubros: function () {
+                                    return { value: [] };
+                                },
+                                loadEmpleadoCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                                    return $ocLazyLoad.load(['App/Empleado/empleadoCtrl.js', 'App/Empleado/empleadoDataFactory.js']);
+                                }]
+                            }
+                        })
                     .state('empleado.add', {
                         url: '/add',
                         templateUrl: '/App/Empleado/Partials/empleadoAdd-MD.html',
@@ -377,6 +399,7 @@
                             }]
                         }
                     })
+                    
         //#endregion
     })
 

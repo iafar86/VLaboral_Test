@@ -1,10 +1,21 @@
 ﻿<div layout="row" flex>
     <section layout="column" flex="100">
         <div flex>
+
            <h2>Resumen Curricular</h2>
             <p>{{empleado.ResumenCurricular}}</p>
 
 
+        </div>
+        <div flex>
+            <md-input-container>
+                <label>Rubro</label>
+                <md-select ng-model="empleado.rubro">
+                    <md-option ng-repeat="rubro in rubros" value="{{rubro}}">
+                        {{rubro}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
         </div>
     </section>
 </div>

@@ -6,7 +6,7 @@
              toggling-method="hover">            
             <button mfb-button icon="mdi-image-edit" label="Editar Informacia&oacute;n" ng-click="edit()"></button>
             <button mfb-button icon="mdi-content-save" label="Guardar Cambios" ng-click="save(infoEmpleador)" ng-disabled="!editValue"></button>
-            <button mfb-button icon="mdi-action-delete" label="Cancelar Cambios" ng-click="cancel()"> </button>
+            <button mfb-button icon="mdi-action-delete" label="Cancelar Cambios" ng-click="cancel(infoEmpleador.Id)"></button>
         </nav>
     </div>
     <!--#endregion-->
@@ -21,7 +21,7 @@
                             <ng-md-icon icon="business" style="fill: #abcdef" size="200"></ng-md-icon>
                         </div>
                     </md-button>
-                    <span class="md-headline">Razon social {{infoEmpleador.Rsocial}}</span>
+                    <span class="md-headline">{{infoEmpleador.Rsocial}}</span>
                     <span class="md-subhead">Rubro {{infoEmpleador.Subrubro}}</span>
                 </md-card-content>
             </md-card>
@@ -63,6 +63,12 @@
                         <div flex>
                             <label>Correo electronico</label>
                             <input ng-model="infoEmpleador.Mail" type="email" placeholder="Email (requerido)" ng-required="true" ng-disabled="!editValue">
+                        </div>
+                    </md-input-container>
+                    <md-input-container>
+                        <div flex>
+                            <label>Pagina Web</label>
+                            <input ng-model="infoEmpleador.paginaWeb" type="url" placeholder="Pagina web" ng-disabled="!editValue"/>
                         </div>
                     </md-input-container>
                 </md-content>

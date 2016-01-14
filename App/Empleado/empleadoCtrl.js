@@ -25,7 +25,7 @@
     //#endregion
 
 
-    $scope.infoEmpleado = infoEmpleado;
+    $scope.infoEmpleado = infoEmpleado.data;
     var infoActualEmpleado = infoEmpleado;
     $scope.empleados = listadoEmpleados;
     var data = $scope.empleados;
@@ -91,23 +91,38 @@
         $scope.editValue = true;
     };
 
-    $scope.save = function (infoEmpleado) {// guarda los cambios y llama a la funcion put de la api        
-        empleadoDataFactory.update({ id: infoEmpleado.Id }, infoEmpleado).$promise.then(
-                function () {
-                    $scope.editValue = false;
-                    alert("Modificacion de Datos Exitosa");
-                },
-                function (response) {
-                    $scope.infoEmpleado = $scope.infoEmpleadoOriginal;
-                    alert("Error en la Modificacion de Datos", response.data);
-                });
-    };
+    //#endregion
 
-    $scope.cancel = function (empleadoId) {
-        $scope.infoEmpleado = empleadoDataFactory.getEmpleado({ id: empleadoId })
-        $scope.editValue = false;
+    $scope.save = function (infoEmpleado) {//fpaz: guarda los cambios y llama a la funcion put de la api        
+        empleadoDataFactory.putEmpleado(infoEmpleado.Id, infoEmpleado).then(function (response) {
+            $scope.editValue = false;
+            alert("Cambios Guardados Correctamente");
+        },
+         function (err) {
+             if (err) {
+                 $scope.error = err;
+                 $scope.cancel();
+                 alert("Error al Modificar la Información: " + $scope.error.Message);
+                 //$scope.message = err.error_description;
+             }
+         });
     };
+    //#endregion
 
+    $scope.cancel = function (prmIdEmpleado) { //fpaz: funcion para cancelar una modificacion u otra operacion y traer los datos originales del empleador        
+        //$scope.infoEmpleador = empleadorDataFactory.getEmpleadors(authSvc.authentication.empleadorId)
+        empleadoDataFactory.getEmpleado(prmIdEmpleado).then(function (response) {
+            $scope.infoEmpleado = response.data;
+            $scope.editValue = false;
+        },
+         function (err) {
+             if (err) {
+                 $scope.error = err;
+                 //$scope.cancel();
+                 alert("Error" + $scope.error.Message);
+             }
+         });
+    };
     //#endregion
 
     //#region Eliminacion de empleados

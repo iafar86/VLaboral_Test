@@ -1,0 +1,58 @@
+﻿<div layout="row">
+    <div flex="50">
+        <md-card>
+            <md-card-content>
+                <md-toolbar>
+                    <h2 class="md-toolbar-tools">
+                        Indica en que rubro/s querés trabajar
+                    </h2>
+                </md-toolbar>
+                <div layout="row">
+                    <div flex="30">
+                        <md-input-container style="margin-right: 10px;">
+                            <md-select placeholder="Seleccionar Rubro" ng-model="rubroSelect">
+                                 <md-option ng-value="rubro" ng-repeat="rubro in rubros">{{ rubro.Nombre }}</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+
+                    <div flex="70">
+                        <md-input-container>
+                            <md-select multiple ng-model="subrubrosSelect" placeholder="Seleccionar Subrubros">
+                                <md-select-label>{{ subrubrosselect.length ? subrubrosselect.join(', ') : 'choose some' }}</md-select-label>
+                                <md-option ng-value="sub.nombre" ng-repeat="sub in rubroselect.subrubros">{{ sub.nombre }}</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+
+    <div flex="50">
+        <md-card>
+            <md-card-content>
+                <md-toolbar>
+                    <h2 class="md-toolbar-tools">
+                        Indica tus habilidades
+                    </h2>
+                </md-toolbar>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>
+
+<div layout="row">
+    <div flex="70">
+        <md-card>
+            <md-card-content>
+                <md-toolbar>
+                    <h2 class="md-toolbar-tools">
+                        En donde trabajaste?
+                    </h2>
+                </md-toolbar>
+            </md-card-conten>
+        </md-card>
+    </div>
+</div>

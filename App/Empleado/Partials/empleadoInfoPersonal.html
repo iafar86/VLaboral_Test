@@ -59,8 +59,8 @@
                         
                         <div layout="row" flex layout-align="end end">
                             <md-button label="Agregar empleado" ng-click="edit()" ng-hide="editValue" class="md-raised md-warn">Editar</md-button>
-                            <md-button label="Guardar Cambios" ng-click="save(infoEmpleado.Id, infoEmpleado)" ng-show="editValue" class="md-raised md-primary">Guardar</md-button>
-                            <md-button label="Cancelar" ng-click="cancel({empleadoId: infoEmpleado.Id})" ng-show="editValue" class="md-raised md-warn">Cancelar</md-button>
+                            <md-button label="Guardar Cambios" ng-click="save(infoEmpleado)" ng-show="editValue" class="md-raised md-primary">Guardar</md-button>
+                            <md-button label="Cancelar" ng-click="cancel(infoEmpleado.Id)" ng-show="editValue" class="md-raised md-warn">Cancelar</md-button>
                         </div>
                         <!--<md-button mfb-menu effect="zoomin" label="herramientas"
              active-icon="mdi-content-clear" resting-icon="mdi-content-add"
