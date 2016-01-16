@@ -233,7 +233,7 @@
                             listadoEmpleados: function (empleadoDataFactory) {
                                 return empleadoDataFactory.getEmpleados();
                             },
-                            listadoRubros: function () {
+                            listRubros: function () {
                                 return { value: [] };
                             },
                             loadEmpleadoCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
@@ -255,7 +255,7 @@
                             listadoEmpleados: function (empleadoDataFactory) {
                                 return empleadoDataFactory.getEmpleados();
                             },
-                            listadoRubros: function () {
+                            listRubros: function () {
                                 return { value: [] };
                             },
                             loadEmpleadoCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
@@ -277,7 +277,7 @@
                             listadoEmpleados: function () {
                                 return { value: [] };
                             },
-                            listadoRubros: function () {
+                            listRubros: function () {
                                 return { value: [] };
                             },
                             loadEmpleadoCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
@@ -300,7 +300,7 @@
                              listadoEmpleados: function () {
                                  return { value: [] };
                              },
-                             listadoRubros: function () {
+                             listRubros: function () {
                                  return { value: [] };
                              },
                              loadEmpleadoCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
@@ -347,7 +347,7 @@
                             listadoEmpleados: function () {
                                 return { value: [] };
                             },
-                            listadoRubros: function () {
+                            listRubros: function () {
                                 return { value: [] };
                             },
                             loadEmpleadoCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
@@ -363,13 +363,13 @@
                             resolve: {
                                 empleadoDataFactory: 'empleadoDataFactory',
                                 rubroDataFactory: 'rubroDataFactory',
+                                listRubros: function (rubroDataFactory) {
+                                    return rubroDataFactory.getRubros();
+                                },
                                 infoEmpleado: function () {
                                     return { value: [] };
                                 },
                                 listadoEmpleados: function () {
-                                    return { value: [] };
-                                },
-                                listadoRubros: function () {
                                     return { value: [] };
                                 },
                                 loadEmpleadoCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
@@ -391,7 +391,7 @@
                             listadoEmpleados: function () {
                                 return { value: [] };
                             },
-                            listadoRubros: function () {
+                            listRubros: function () {
                                 return { value: [] };
                             },
                             loadEmpleadoCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {

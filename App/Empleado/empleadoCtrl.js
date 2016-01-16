@@ -1,21 +1,28 @@
 ﻿vLaboralApp.controller('empleadoCtrl', function ($scope, $stateParams, $state, $filter, $mdDialog, ngTableParams, empleadoDataFactory, rubroDataFactory
-    , listadoEmpleados, infoEmpleado, listadoRubros) {
+    , listadoEmpleados, infoEmpleado, listRubros) {
     
     //#region Rubro/SubRubro
 
-    $scope.rubros = listadoRubros; //Carga todos los rubros y subrubros existentes
+   // $scope.rubros = listadoRubros; //Carga todos los rubros y subrubros existentes
+    $scope.rubros = listRubros;
+    $scope.subrubrosSelect = [];
     $scope.rubrosList = [];
     $scope.rubroSelect = [];
-    $scope.subRubroSelect = [];
+   // $scope.rubroSelect = [];
+   // $scope.subRubroSelect = [];
 
     $scope.AddRubro = function () {
         rubroTemp = {
             rId: $scope.rubroSelect.Id,
-            rNombre: $scope.rubroSelect.Nombre,
-            srId: $scope.subRubroSelect.Id,
-            srNombre: $scope.subRubroSelect.Nombre
+            rNombre: $scope.rubroSelect.Nombre,            
         };
+        subrubroTemp = {
+            srId: $scope.subrubrosSelect.Id,
+            srNombre: $scope.subrubrosSelect.Nombre
+        }
         $scope.rubrosList.push(rubroTemp);
+        $scope.subrubrosSelect.push(subrubroTemp);
+        $scope.subrubrosSelect = null;
     } //Agrega un nuevo rubro a la lista de Rubro/SubRubro del empleado
 
     $scope.RubroDel = function (item) {
@@ -24,7 +31,47 @@
     }//Elimino un Rubro/SubRubro de la lista
     //#endregion
 
+    //#Region Habilidades
+    $scope.HabilidadesList = [];
+    $scope.AddHabilidad = function () {
+        habilidadTemp = {
+            habilidadNombre: $scope.empleado.habilidadNombre,
+            habilidadRango: $scope.empleado.habilidadRango
+    }
+        $scope.HabilidadesList.push(habilidadTemp);
+        $scope.empleado.habilidadNombre = null;
+        $scope.empleado.habilidadRango = null;
+    }
 
+    $scope.habilidadesDel = function (item) {
+        var index = $scope.HabilidadesList.indexOf(item);
+        $scope.HabilidadesList.splice(index, 1);
+    }
+    //#endregion
+
+    //Region Idioma
+    $scope.idiomaUsuario = '';
+    $scope.idiomas = ["Español", "Ingles", "Aleman", "Frances", "Ruso", "Chino", "Portugues"];
+
+    $scope.niveles = ["Bajo", "Intermedio", "Avanzado"];
+
+    $scope.idiomasList = [];
+    $scope.AddIdioma = function () {
+        idiomaTemp = {
+            idiomaNombre: $scope.empleado.idiomaNombre,
+            idiomaNivel: $scope.empleado.idiomaNivel
+        }
+        $scope.idiomasList.push(idiomaTemp);
+        $scope.empleado.idiomaNombre = null;
+        $scope.empleado.idiomaNivel = null;
+    }
+
+    $scope.idomasDel = function (item) {
+        var index = $scope.idiomasList.indexOf(item);
+        $scope.idiomasList.splice(index, 1);
+    }
+
+    //#endregion
     $scope.infoEmpleado = infoEmpleado.data;
     var infoActualEmpleado = infoEmpleado;
     $scope.empleados = listadoEmpleados;
