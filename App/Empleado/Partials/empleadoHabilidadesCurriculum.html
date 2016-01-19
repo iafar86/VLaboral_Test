@@ -1,5 +1,5 @@
-﻿<div layout="row">
-    <div flex="50">
+﻿<div layout="row" layout-sm="column" flex>
+    <div flex="50" flex-sm="100" flex-md="100">
         <md-card>
             <md-card-content>
                 <md-toolbar>
@@ -7,8 +7,8 @@
                         Indica en que rubro/s querés trabajar
                     </h2>
                 </md-toolbar>
-                <div layout="row">
-                    <div flex="30">
+                <div layout="row" layout-sm="column" layout-md="column">
+                    <div flex="30" flex-sm="100" flex-md="100">
                         <md-input-container style="margin-right: 10px;">
                             <md-select placeholder="Seleccionar Rubro" ng-model="rubroSelect">
                                 <md-option ng-value="rubro" ng-repeat="rubro in rubros">{{ rubro.Nombre }}</md-option>
@@ -16,37 +16,47 @@
                         </md-input-container>
                     </div>
 
-                    <div flex="30">
+                    <div flex="50" flex-sm="100" flex-md="100">
                         <md-input-container>
-                            <md-select multiple ng-model="subrubrosSelect" placeholder="Seleccionar Subrubros">
+                            <md-select multiple placeholder="Seleccionar Subrubros" ng-model="subrubrosSelect">
                                 <!--<md-select-label>{{ subrubrosSelect.length ? subrubrosSelect.join(', ') : 'Choose some' }}</md-select-label>-->
                                 <md-optgroup label="Subrubros">
-                                    <md-option ng-value="sub.Nombre" ng-repeat="sub in rubroSelect.SubRubros">{{ sub.Nombre }}</md-option>
+                                    <md-option ng-value="sub" ng-repeat="sub in rubroSelect.SubRubros">{{ sub.Nombre }}</md-option>
                                 </md-optgroup>
                             </md-select>
                         </md-input-container>
                     </div>
-                    
+
                 </div>
                 <div layout="row" flex layout-align="end end">
                     <md-button label="Agregar Rubro/Subrubro" class="md-raised md-warn" ng-click="AddRubro()">Agregar</md-button>
                 </div>
 
-                <md-list>
-                   <md-list-item class="md-3-line" ng-repeat="rubroS in rubrosList">
-                       <div class="md-list-item-text" layout="column">
-                           <h3>{{rubroS.rNombre}}</h3>
-                           <h4>{{subrubrosSelect.length ? subrubrosSelect.join(', ') : 'Choose some'}}</h4>
-                       </div>
-                       <md-divider></md-divider>
-                   </md-list-item>
-                    
+                <md-list ng-repeat="rubroG in rubroGuardar">
+                    <md-list-item class="md-3-line">
+                        <div class="md-list-item-text" layout="column">
+                            <h2>{{rubroG.rNombre}}</h2>
+                            <div ng-repeat="subrubroG in rubroG.subRubro">
+                                <ul>
+                                    <li>
+                                        <h3>{{subrubroG.Nombre}}</h3>
+                                    </li>
+                                </ul>
+                                <!--subrubrosSelect.length ? subrubrosSelect.join(', ') : 'Choose some'-->
+                            </div>
+                        </div>
+                        <div layout="column" layout-align="end end">
+                            <md-button label="Eliminar" class="md-warn" ng-click="RubroDel(rubroG)">Eliminar</md-button>
+                        </div>
+
+                    </md-list-item>
+                    <md-divider></md-divider>
                 </md-list>
             </md-card-content>
         </md-card>
     </div>
 
-    <div flex="50">
+    <div flex="50" flex-sm="100" flex-md="100">
         <md-card>
             <md-card-content>
                 <md-toolbar>
@@ -54,18 +64,19 @@
                         Indica tus habilidades
                     </h2>
                 </md-toolbar>
-                <div layout="row">
-                    <div flex="40">
+                <div layout="row" layout-sm="column" layout-md="column">
+                    <div flex="40" flex-sm="100" flex-md="100">
                         <md-input-container class="md-default-theme md-input-invalid">
                             <label>Ingresa tu habilidad</label>
 
-                            <input type="text" ng-model="empleado.habilidadNombre" class="form-control" required />
+                            <input type="text" ng-model="empleado.habilidadNombre" class="form-control" />
                         </md-input-container>
                     </div>
-                    <div flex="40">
-                        <md-input-container class="md-default-theme md-input-invalid">
-                            <label>Rango</label>
-                            <input type="text" ng-model="empleado.habilidadRango" class="form-control" />
+                    <div flex="40" flex-sm="100" flex-md="100">
+                        <md-input-container style="margin-right: 10px;">
+                            <md-select placeholder="Nivel" ng-model="empleado.habilidadNivel">
+                                <md-option ng-value="nivelHabilidad" ng-repeat="nivelHabilidad in nivelesHabilidades">{{ nivelHabilidad }}</md-option>
+                            </md-select>
                         </md-input-container>
                     </div>
 
@@ -73,17 +84,21 @@
                 <div layout="row" flex layout-align="end end">
                     <md-button label="Agregar Habilidad" class="md-raised md-warn" ng-click="AddHabilidad()">Agregar</md-button>
                 </div>
-                <md-list>
-                    <md-list-item class="md-3-line" ng-repeat="habilidad in HabilidadesList">
+                <md-list ng-repeat="habilidad in HabilidadesList">
+                    <md-list-item class="md-3-line" layout="row">
                         <div class="md-list-item-text" layout="column">
-                            <h3>{{habilidad.habilidadNombre}}</h3>
-                            <h4>{{habilidad.habilidadRango}}</h4>
+                            <h2>{{habilidad.habilidadNombre}}</h2>
+                            <ul>
+                                <li>
+                                    <h3>{{habilidad.habilidadRango}}</h3>
+                                </li>
+                            </ul>
                         </div>
-                        
                         <div layout="column" layout-align="end end">
                             <md-button label="Eliminar" class="md-warn" ng-click="habilidadesDel(habilidad)">Eliminar</md-button>
-                        </div>                                            
+                        </div>                    
                     </md-list-item>
+                    
                     <md-divider></md-divider>
                 </md-list>
             </md-card-content>
@@ -91,8 +106,8 @@
     </div>
 </div>
 
-<div layout="row">
-    <div flex="40">
+<div layout="row" >
+    <div flex="40" flex-sm="100" flex-md="100">
         <md-card>
             <md-card-content>
                 <md-toolbar>
@@ -100,8 +115,8 @@
                         ¿Qué Idiomas hablas?
                     </h2>
                 </md-toolbar>
-                <div layout="row">
-                    <div flex="40">
+                <div layout="row" layout-sm="column" layout-md="column">
+                    <div flex="40" flex-sm="100" flex-md="100">
                         <md-input-container style="margin-right: 10px;">
                             <md-select placeholder="Seleccionar Idioma" ng-model="empleado.idiomaNombre">
                                 <md-option ng-value="idioma" ng-repeat="idioma in idiomas">{{ idioma }}</md-option>
@@ -109,7 +124,7 @@
                         </md-input-container>
                     </div>
 
-                    <div flex="40">
+                    <div flex="40" flex-sm="100" flex-md="100">
                         <md-input-container>
                             <md-select ng-model="empleado.idiomaNivel" placeholder="Nivel">
                                 <!--<md-select-label>{{ subrubrosSelect.length ? subrubrosSelect.join(', ') : 'Choose some' }}</md-select-label>-->
@@ -124,11 +139,15 @@
                     </div>
                 </div>
                 <div layout="column">
-                    <md-list>
-                        <md-list-item class="md-3-line" ng-repeat="idioma in idiomasList">
+                    <md-list ng-repeat="idioma in idiomasList">
+                        <md-list-item class="md-3-line">
                             <div class="md-list-item-text" layout="column">
-                                <h3>{{idioma.idiomaNombre}}</h3>
-                                <h4>{{idioma.idiomaNivel}}</h4>
+                                <h2>{{idioma.idiomaNombre}}</h2>
+                                <ul>
+                                    <li>
+                                        <h3>{{idioma.idiomaNivel}}</h3>
+                                    </li>
+                                </ul>
                             </div>
 
                             <div layout="row" layout-align="end end">
@@ -138,14 +157,14 @@
                         <md-divider></md-divider>
                     </md-list>
                 </div>
-                
-            </md-card-conten>
+
+                </md-card-conten>
         </md-card>
     </div>
 </div>
 
 <div layout="row">
-    <div flex="70">
+    <div flex="70" flex-sm="100" flex-md="100">
         <md-card>
             <md-card-content>
                 <md-toolbar>
@@ -153,7 +172,7 @@
                         En donde trabajaste?
                     </h2>
                 </md-toolbar>
-            </md-card-conten>
+                </md-card-conten>
         </md-card>
     </div>
 </div>

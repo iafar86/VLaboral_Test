@@ -6,41 +6,42 @@
    // $scope.rubros = listadoRubros; //Carga todos los rubros y subrubros existentes
     $scope.rubros = listRubros;
     $scope.subrubrosSelect = [];
-    $scope.rubrosList = [];
-    $scope.rubroSelect = [];
-   // $scope.rubroSelect = [];
-   // $scope.subRubroSelect = [];
+    $scope.rubroGuardar = [];
+   //$scope.rubroSelect = [];
+   //$scope.rubroSelect = [];
+    $scope.subRubroList = [];
 
     $scope.AddRubro = function () {
         rubroTemp = {
             rId: $scope.rubroSelect.Id,
-            rNombre: $scope.rubroSelect.Nombre,            
+            rNombre: $scope.rubroSelect.Nombre,
+            subRubro: $scope.subrubrosSelect,                       
         };
-        subrubroTemp = {
-            srId: $scope.subrubrosSelect.Id,
-            srNombre: $scope.subrubrosSelect.Nombre
-        }
-        $scope.rubrosList.push(rubroTemp);
-        $scope.subrubrosSelect.push(subrubroTemp);
-        $scope.subrubrosSelect = null;
+        //$scope.subRubroList.push($scope.subrubrosSelect);
+        $scope.rubroGuardar.push(rubroTemp);
+        $scope.rubroSelect = null;
+        $scope.subrubrosSelect = [];
+        //$scope.subRubroList.push(subrubroTemp);
+       // $scope.subrubrosSelect = null;
     } //Agrega un nuevo rubro a la lista de Rubro/SubRubro del empleado
 
     $scope.RubroDel = function (item) {
-        var index = $scope.rubrosList.indexOf(item);
-        $scope.rubrosList.splice(index, 1);
+        var index = $scope.rubroGuardar.indexOf(item);
+        $scope.rubroGuardar.splice(index, 1);
     }//Elimino un Rubro/SubRubro de la lista
     //#endregion
 
     //#Region Habilidades
+    $scope.nivelesHabilidades = ["Bajo", "Intermedio", "Experto"];
     $scope.HabilidadesList = [];
     $scope.AddHabilidad = function () {
         habilidadTemp = {
             habilidadNombre: $scope.empleado.habilidadNombre,
-            habilidadRango: $scope.empleado.habilidadRango
+            habilidadRango: $scope.empleado.habilidadNivel
     }
         $scope.HabilidadesList.push(habilidadTemp);
         $scope.empleado.habilidadNombre = null;
-        $scope.empleado.habilidadRango = null;
+        $scope.empleado.habilidadNivel = null;
     }
 
     $scope.habilidadesDel = function (item) {
